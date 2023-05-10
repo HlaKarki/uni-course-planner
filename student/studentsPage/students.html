@@ -5,16 +5,16 @@
     <title>University Course Planner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../landingPage/index.css">
+    <link rel="stylesheet" href="../../landingPage/index.css">
     <link rel="stylesheet" href="students.css">
 </head>
 
 <body>
     <div id="logo_banner">
-        <h1>CKHH University Course Planner</h1>
+        <h1><a href="../../landingPage/index.html?_ijt=ni26jp9mvcg27m5q4bg3a4musn&_ij_reload=RELOAD_ON_SAVE">CKHH University Course Planner</a></h1>
     </div>
 
-    <div id="students_title">
+    <div id="page_mini_title">
         <h2>Student Data</h2>
     </div>
 
@@ -33,34 +33,38 @@
                 <th>username</th>
                 <th>email</th>
                 <th>major</th>
+                <th>Address</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td><a href="">1</a></td>
-                <td><a href="">cameron</a></td>
+                <td><a href="../studentSchedulesPage/studentSchedulesPage.html?_ijt=ni26jp9mvcg27m5q4bg3a4musn&_ij_reload=RELOAD_ON_SAVE">1</a></td>
+                <td><a href="../studentSchedulesPage/studentSchedulesPage.html?_ijt=ni26jp9mvcg27m5q4bg3a4musn&_ij_reload=RELOAD_ON_SAVE">cameron</a></td>
                 <td>cameron@CKHH.edu</td>
                 <td>CS</td>
+                <td>1234 Spring Valley, Corvallis, Oregon, 97330</td>
             </tr>
             <tr>
-                <td><a href="">2</a></td>
-                <td><a href="">hla</a></td>
+                <td>2</td>
+                <td>hla</td>
                 <td>hla@CKHH.edu</td>
                 <td>CS</td>
+                <td>5678 Winter Valley, Albany, Oregon, 97332</td>
             </tr>
             <tr>
-                <td><a href="">3</a></td>
-                <td><a href="">trent</a></td>
+                <td>3</td>
+                <td>trent</td>
                 <td>trent@CKHH.edu</td>
                 <td>CS</td>
+                <td>9999 Error Location, Corvallis, Oregon, 97330</td>
             </tr>
 
             </tbody>
         </table>
     </div>
 
-    <div class="add_student_form_container">
-        <form class="add_student_form">
+    <div class="form_container">
+        <form class="form">
             <label id="form_title">Add New Student</label>
             <div class="form_div">
                 <label for="username">Username:</label>
