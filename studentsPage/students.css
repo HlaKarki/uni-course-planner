@@ -1,0 +1,71 @@
+#students_title {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.table_container {
+    margin: 0 1rem;
+}
+
+#explain_to_user {
+    margin-bottom: 0.5rem;
+    padding: 2px;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.add_student_form_container {
+    width: 70%;
+    margin: 2rem auto;
+}
+
+.add_student_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.form_div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+#form_title {
+    margin-bottom: 2rem;
+}
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #3e8e41;
+}
