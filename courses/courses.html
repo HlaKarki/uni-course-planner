@@ -91,17 +91,18 @@
                 <input type="text" id="totalEnrolled" name="totalEnrolled">
             </div>
 
+            <div class="form_div">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+            </div>
+
             <div class="form_div displayBlock">
                 <label for="online">Online:</label>
                 <input type="checkbox" id="online" name="online" value="yes">
             </div>
 
-            <div id="hideIt" class="hide">
-                <div class="form_div">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email">
-                </div>
 
+            <div id="hideIt">
                 <div class="form_div">
                     <label for="meetingTime">Meeting Time:</label>
                     <input type="email" id="meetingTime" name="meetingTime">
@@ -123,9 +124,9 @@
 
         onlineCheckbox.addEventListener('change', function() {
             if (this.checked) {
-                additionalFields.classList.remove('hide');
-            } else {
                 additionalFields.classList.add('hide');
+            } else {
+                additionalFields.classList.remove('hide');
             }
         });
     </script>
