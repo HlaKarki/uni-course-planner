@@ -65,8 +65,16 @@ th {
     border-radius: 3px;
 }
 
+#explain_to_user p{
+    margin-bottom: 0.5rem;
+}
+
 .underline {
     text-decoration: underline;
+}
+
+.italic {
+    font-style: italic;
 }
 
 #logo_banner a {
