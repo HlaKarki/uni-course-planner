@@ -32,6 +32,7 @@
                     <th>Username</th>
                     <th>Total Credit Hours</th>
                     <th>Term</th>
+                    <th></th>
                 </tr>
             </thead>
 
@@ -42,6 +43,7 @@
                     <td><a href="../student/studentSchedulesPage/studentSchedulesPage.html?_ijt=ni26jp9mvcg27m5q4bg3a4musn&_ij_reload=RELOAD_ON_SAVE">cameron</a></td>
                     <td>16</td>
                     <td><a href="../student/studentCoursesPage/studentCoursesPage.html?_ijt=ni26jp9mvcg27m5q4bg3a4musn&_ij_reload=RELOAD_ON_SAVE">Spring 2023</a></td>
+                    <td><a href="#deleteScheduleButton">Delete</a></td>
                 </tr>
                 <tr>
                     <td>2</td>
@@ -49,6 +51,7 @@
                     <td>hla</td>
                     <td>20</td>
                     <td>Spring 2023</td>
+                    <td><a href="#deleteScheduleButton">Delete</a></td>
                 </tr>
                 <tr>
                     <td>3</td>
@@ -56,10 +59,29 @@
                     <td>trent</td>
                     <td>32</td>
                     <td>Fall 2022</td>
+                    <td><a href="#deleteScheduleButton">Delete</a></td>
                 </tr>
             </tbody>
         </table>
     </div>
 
+    <div class="user_direction">
+        <label>
+            *To add a new schedule, click the student's account you want to create one in
+        </label>
+    </div>
+
+    <div class="form_container">
+        <form class="form" id="deleteScheduleForm">
+            <label class="form_title bold">Delete</label>
+
+            <div class="form_div block">
+                <label for="scheduleDelete">idSchedule:</label>
+                <input type="text" id="scheduleDelete" name="scheduleDelete">
+            </div>
+
+            <button id="deleteScheduleButton" type="submit">Delete</button>
+        </form>
+    </div>
 </body>
 </html>
