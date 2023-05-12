@@ -29,6 +29,8 @@
                 <th>Online</th>
                 <th>Meeting Time</th>
                 <th>Classroom</th>
+                <th></th>
+                <th></th>
             </tr>
             </thead>
 
@@ -41,6 +43,8 @@
                 <td>0</td>
                 <td>17:00 MWs</td>
                 <td>Weniger 153</td>
+                <td><a href="#updateCourseForm">Update</a></td>
+                <td><a href="#deleteCourseForm">Delete</a></td>
             </tr>
             <tr>
                 <td>2</td>
@@ -50,6 +54,8 @@
                 <td>0</td>
                 <td>08:00 MWs</td>
                 <td>Weniger 151</td>
+                <td><a href="#updateCourseForm">Update</a></td>
+                <td><a href="#deleteCourseForm">Delete</a></td>
             </tr>
             <tr>
                 <td>3</td>
@@ -59,6 +65,8 @@
                 <td>1</td>
                 <td>-</td>
                 <td>-</td>
+                <td><a href="#updateCourseForm">Update</a></td>
+                <td><a href="#deleteCourseForm">Delete</a></td>
             </tr>
             </tbody>
         </table>
@@ -66,7 +74,7 @@
 
     <div class="form_container">
         <form class="form">
-            <label id="form_title">Add New Course</label>
+            <label class="form_title bold">Add New Course</label>
 
             <div class="form_div">
                 <label for="title">Title:</label>
@@ -95,12 +103,16 @@
             <div id="hideIt">
                 <div class="form_div">
                     <label for="meetingTime">Meeting Time:</label>
-                    <input type="text" id="meetingTime" name="meetingTime">
+                    <input type="text" id="meetingTime" name="meetingTime" placeholder="00:00">
                 </div>
 
-                <div class="form_div">
+                <div class="form_div prof">
                     <label for="classroom">Classroom:</label>
-                    <input type="text" id="classroom" name="classroom">
+                    <select id="classroom" name="course">
+                        <option value="W153">Weniger 153</option>
+                        <option value="W151">Weniger 151</option>
+                        <option value="LPSC">Linus Pauling Science Center</option>
+                    </select>
                 </div>
             </div>
 
@@ -108,15 +120,87 @@
         </form>
     </div>
 
+    <div class="form_container">
+        <form class="form" id="updateCourseForm">
+            <label class="form_title bold">Update</label>
+            <div class="form_div block">
+                <label for="idCourse">idCourse:</label>
+                <input type="text" id="idCourse" name="idCourse">
+            </div>
+
+            <div class="form_div block">
+                <label for="titleUpdate">Title:</label>
+                <input type="text" id="titleUpdate" name="titleUpdate">
+            </div>
+
+            <div class="form_div block">
+                <label for="professorUpdate">Professor:</label>
+                <input type="text" id="professorUpdate" name="professorUpdate">
+            </div>
+
+            <div class="form_div block">
+                <label for="totalEnrolledUpdate">Total Enrolled:</label>
+                <input type="text" id="totalEnrolledUpdate" name="totalEnrolledUpdate">
+            </div>
+
+            <div class="form_div displayBlock">
+                <label for="onlineUpdate">Online:</label>
+                <input type="checkbox" id="onlineUpdate" name="onlineUpdate" value="yes">
+            </div>
+
+            <div id="hideItUpdate">
+                <div class="form_div">
+                    <label for="meetingTimeUpdate">Meeting Time:</label>
+                    <input type="text" id="meetingTimeUpdate" name="meetingTimeUpdate" placeholder="00:00">
+                </div>
+
+                <div class="form_div prof">
+                    <label for="classroomUpdate">Classroom:</label>
+                    <select id="classroomUpdate" name="classroomUpdate">
+                        <option value="W153">Weniger 153</option>
+                        <option value="W151">Weniger 151</option>
+                        <option value="LPSC">Linus Pauling Science Center</option>
+                    </select>
+                </div>
+            </div>
+
+            <button id="updateCourseButton" type="submit">Update</button>
+        </form>
+    </div>
+
+    <div class="form_container">
+        <form class="form" id="deleteCourseForm">
+            <label class="form_title bold">Delete</label>
+
+            <div class="form_div block">
+                <label for="courseDelete">idCourse:</label>
+                <input type="text" id="courseDelete" name="courseDelete">
+            </div>
+
+            <button id="deleteCourseButton" type="submit">Delete</button>
+        </form>
+    </div>
+
     <script>
         const onlineCheckbox = document.getElementById('online');
         const additionalFields = document.getElementById('hideIt');
+
+        const onlineCheckbox2 = document.getElementById('onlineUpdate');
+        const additionalFields2 = document.getElementById('hideItUpdate');
 
         onlineCheckbox.addEventListener('change', function() {
             if (this.checked) {
                 additionalFields.classList.add('hide');
             } else {
                 additionalFields.classList.remove('hide');
+            }
+        });
+
+        onlineCheckbox2.addEventListener('change', function() {
+            if (this.checked) {
+                additionalFields2.classList.add('hide');
+            } else {
+                additionalFields2.classList.remove('hide');
             }
         });
     </script>
