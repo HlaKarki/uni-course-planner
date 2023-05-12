@@ -30,6 +30,7 @@
                     <th>Credits</th>
                     <th>Prerequisites</th>
                     <th>Grade</th>
+                    <th></th>
                 </tr>
             </thead>
 
@@ -40,6 +41,7 @@
                     <td>4</td>
                     <td>CS 162</td>
                     <td>A-</td>
+                    <td><a href="#">Delete</a></td>
                 </tr>
             </tbody>
         </table>
@@ -47,16 +49,36 @@
 
     <div class="form_container">
         <form class="form">
-            <label id="form_title">Add a course to your schedule</label>
-            <div class="form_div">
-                <label for="course"></label>
+            <label class="form_title bold">Add course to your schedule</label>
+
+            <div class="form_div courseDropDown">
+                <label for="course">*Select Course:</label>
                 <select id="course" name="course">
                     <option value="database">Intro To Database</option>
                     <option value="webdev">Web Development</option>
                 </select>
             </div>
 
+            <div class="form_div">
+                <label for="grade">Grade:</label>
+                <input type="text" id="grade" name="grade" placeholder="--">
+            </div>
+
             <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="form_container">
+        <form class="form">
+            <label class="form_title bold">Delete</label>
+            <div class="form_div courseDropDown">
+                <label for="deleteCourse">*Select Course:</label>
+                <select id="deleteCourse" name="course">
+                    <option value="database">Intro To Assembly</option>
+                </select>
+            </div>
+
+            <button id="updateStudentButton" type="submit">Update</button>
         </form>
     </div>
 </body>
