@@ -28,6 +28,7 @@
                 <th>idSchedule</th>
                 <th>Total Credits</th>
                 <th>Term</th>
+                <th></th>
             </tr>
         </thead>
 
@@ -36,6 +37,7 @@
                 <td>2</td>
                 <td>20</td>
                 <td><a href="../studentCoursesPage/studentCoursesPage.html?_ijt=ni26jp9mvcg27m5q4bg3a4musn&_ij_reload=RELOAD_ON_SAVE">Spring 2023</a></td>
+                <td><a href="#deleteScheduleButton">Delete</a></td>
             </tr>
         </tbody>
     </table>
@@ -43,13 +45,26 @@
 
 <div class="form_container">
     <form class="form">
-        <label id="form_title">Create New Schedule</label>
+        <label class="form_title bold">Create New Schedule</label>
         <div class="form_div">
-            <label for="term">Term:</label>
+            <label for="term">*Term:</label>
             <input type="text" id="term" name="term">
         </div>
 
         <button type="submit">Submit</button>
+    </form>
+</div>
+
+<div class="form_container">
+    <form class="form" id="deleteScheduleForm">
+        <label class="form_title bold">Delete</label>
+
+        <div class="form_div block">
+            <label for="scheduleDelete">idSchedule:</label>
+            <input type="text" id="scheduleDelete" name="scheduleDelete">
+        </div>
+
+        <button id="deleteScheduleButton" type="submit">Delete</button>
     </form>
 </div>
 
