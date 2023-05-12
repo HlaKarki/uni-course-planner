@@ -55,7 +55,7 @@ th {
 }
 
 .table_container {
-    margin: 0 1rem;
+    margin: 2rem 1rem;
 }
 
 #page_mini_title {
@@ -81,6 +81,10 @@ th {
 
 .italic {
     font-style: italic;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 #logo_banner a {
@@ -112,7 +116,7 @@ th {
     margin-bottom: 10px;
 }
 
-#form_title {
+.form_title {
     margin-bottom: 2rem;
 }
 
