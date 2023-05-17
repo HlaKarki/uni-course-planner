@@ -19,6 +19,9 @@
     </div>
 
     <div class="table_container">
+        <div id="explain_to_user">
+            To check the details of a course, please click the values that are <label class="underline">underlined</label>
+        </div>
         <table>
             <thead>
             <tr>
@@ -37,7 +40,7 @@
             <tbody>
             <tr>
                 <td>1</td>
-                <td>Intro To Assembly</td>
+                <td><a href="../courseDetailsPage/courseDetailsPage.html">Intro To Assembly</a></td>
                 <td>Paris Kalathas</td>
                 <td>60</td>
                 <td>0</td>
@@ -91,8 +94,18 @@
             </div>
 
             <div class="form_div">
-                <label for="totalEnrolled">Total enrolled:</label>
-                <input type="text" id="totalEnrolled" name="totalEnrolled">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="5" cols="19"></textarea>
+            </div>
+
+            <div class="form_div totCreds">
+                <label for="totalCredits">Total Credits:</label>
+                <input type="number" id="totalCredits" name="totalCredits" min="1" max="5">
+            </div>
+
+            <div class="form_div">
+                <label for="Prerequisites">Prerequisites:</label>
+                <input type="text" id="Prerequisites" name="Prerequisites">
             </div>
 
             <div class="form_div displayBlock">
