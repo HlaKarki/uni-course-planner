@@ -19,21 +19,22 @@
         </thead>
 
         <tbody>
-        <tr>
-            <td>1</td>
-            <td>Intro To Assembly</td>
-            <td>Paris Kalathas</td>
-            <td>60</td>
-            <td>{{online}}</td>
-            {{#if online}}
-                <td>--</td>
-                <td>--</td>
-            {{else}}
-                <td>17:00 MWs</td>
-                <td>Weniger 153</td>
-            {{/if}}
-
-        </tr>
+            {{#each courseDetails}}
+                <tr>
+                    <td>{{courseId}}</td>
+                    <td>{{title}}</td>
+                    <td>{{professor}}</td>
+                    <td>{{totalEnrolled}}</td>
+                    <td>{{online}}</td>
+                    {{#if online}}
+                        <td>--</td>
+                        <td>--</td>
+                    {{else}}
+                        <td>{{meetTime}}</td>
+                        <td>{{location}}</td>
+                    {{/if}}
+                </tr>
+            {{/each}}
         </tbody>
     </table>
 </div>
