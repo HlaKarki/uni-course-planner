@@ -13,7 +13,32 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
 app.get('/students', (req,res,next) => {
-    res.status(200).render('studentsPage')
+    const students = [
+        {
+            studentId: 1,
+            username: "cameron",
+            email: "cameron@ckhh.edu",
+            major: "CS",
+            address: "1234 Spring Valley, Corvallis, Oregon, 97330, USA"
+        },
+        {
+            studentId: 2,
+            username: "hla",
+            email: "hla@ckhh.edu",
+            major: "CS",
+            address: "5678 Summer Valley, Corvallis, Albany, 97332, USA"
+        },
+        {
+            studentId: 3,
+            username: "trenton",
+            email: "trenton@ckhh.edu",
+            major: "CS",
+            address: "9999 Winter Valley, Corvallis, Oregon, 97330, USA"
+        }
+    ]
+    res.status(200).render('studentsPage', {
+        students
+    })
 })
 
 app.get('/studentSchedules/:studentID', (req, res, next) => {
@@ -30,9 +55,17 @@ app.get('/studentSchedules/:studentID', (req, res, next) => {
     }
     console.log("== Student id: ", studentId)
 
+    const studentSchedules = [
+        {
+            scheduleId: 1,
+            totalCredits: 16,
+            term: "Spring 2023",
+            studentId: 1
+        }
+    ]
     res.status(200).render('studentSchedulesPage', {
         studentName: studentName,
-        studentId: studentId
+        studentSchedules
     })
 })
 
@@ -50,28 +83,104 @@ app.get('/studentCourses/:studentId', (req, res, next) => {
     }
     console.log("== Student id from courses: ", studentId)
 
+    // 1, Intro to assembly, , 4, CS 162, A-
+    const studentCourses = [
+        {
+            courseId: 1,
+            title: "Intro to Assembly",
+            description: "Learning IA32, MASM and CISC Architecture",
+            credits: 4,
+            prereq: "CS 162",
+            grade: "A-"
+        }
+    ]
     res.status(200).render('studentCoursesPage', {
         studentName: studentName,
-        term: "Spring 2023"
+        term: "Spring 2023",
+        studentCourses
     })
 })
 
 app.get("/courseDetails/:courseId", (req, res, next) => {
     const courseId = parseInt(req.params.courseId, 10)
-    let courseName = ""
+    let courseTitle = ""
+    const courseDetails = [
+        {
+            courseId: courseId,
+            title: "Intro to Assembly",
+            professor: "Paris Kalathas",
+            totalEnrolled: 1,
+            online: 0,
+            meetTime: "17:00 MWs",
+            location: "Weniger 153"
+        },
+        {
+            courseId: courseId,
+            title: "Intro to Database",
+            professor: "Christopher Buss",
+            totalEnrolled: 1,
+            online: 0,
+            meetTime: "08:00 MWs",
+            location: "Weniger 151"
+        }
+    ]
 
     res.status(200).render('courseDetailsPage', {
         courseName: "Test course title",
-        online: 0
+        courseDetails
     })
 })
 
 app.get("/professors", (req, res, next) => {
-    res.status(200).render('professorsPage')
+    const professors = [
+        {
+            professorId: 1,
+            firstName: "Paris",
+            lastName: "Kalathas",
+            email: "kalathap@oregonstate.edu"
+        },
+        {
+            professorId: 2,
+            firstName: "Christopher",
+            lastName: "Buss",
+            email: "bussch@oregonstate.edu"
+        },
+        {
+            professorId: 3,
+            firstName: "Robb",
+            lastName: "Hess",
+            email: "hessro@oregonstate.edu"
+        }
+    ]
+    res.status(200).render('professorsPage', {
+        professors
+    })
 })
 
 app.get("/classrooms", (req, res, next) => {
-    res.status(200).render('classroomsPage')
+    const classrooms = [
+        {
+            classroomId: 1,
+            totalSeats: 60,
+            building: "Weniger",
+            roomNumber: 153
+        },
+        {
+            classroomId: 2,
+            totalSeats: 150,
+            building: "Weniger",
+            roomNumber: 151
+        },
+        {
+            classroomId: 3,
+            totalSeats: 105,
+            building: "Linus Pauling Science Center",
+            roomNumber: 125
+        }
+    ]
+    res.status(200).render('classroomsPage', {
+        classrooms
+    })
 })
 
 app.get("/courses", (req, res, next) => {
