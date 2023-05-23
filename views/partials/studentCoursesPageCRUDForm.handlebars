@@ -1,0 +1,34 @@
+<div class="form_container">
+    <form class="form">
+        <label class="form_title bold">Add course to your schedule</label>
+
+        <div class="form_div courseDropDown">
+            <label for="course">*Select Course:</label>
+            <select id="course" name="course">
+                <option value="database">Intro To Database</option>
+                <option value="webdev">Web Development</option>
+            </select>
+        </div>
+
+        <div class="form_div">
+            <label for="grade">Grade:</label>
+            <input type="text" id="grade" name="grade" placeholder="--">
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<div class="form_container">
+    <form class="form" id="deleteCourseForm">
+        <label class="form_title bold">Delete</label>
+        <div class="form_div courseDropDown">
+            <label for="deleteCourse">*Select Course:</label>
+            <select id="deleteCourse" name="course">
+                <option value="database">Intro To Assembly</option>
+            </select>
+        </div>
+
+        <button id="updateStudentButton" type="submit">Update</button>
+    </form>
+</div>
