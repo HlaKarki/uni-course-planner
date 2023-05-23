@@ -17,13 +17,16 @@
         </thead>
 
         <tbody>
-        <tr>
-            <td>2</td>
-            <td>20</td>
-            <td><a href="/studentCourses/{{studentId}}">Spring 2023</a></td>
-            <td><a href="#deleteScheduleButton">Delete</a></td>
-        </tr>
+            {{#each studentSchedules}}
+                <tr>
+                    <td>{{scheduleId}}</td>
+                    <td>{{totalCredits}}</td>
+                    <td><a href="/studentCourses/{{studentId}}">{{term}}</a></td>
+                    <td><a href="#deleteScheduleButton">Delete</a></td>
+                </tr>
+            {{/each}}
         </tbody>
+
     </table>
 </div>
 
