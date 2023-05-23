@@ -1,0 +1,118 @@
+<div class="form_container">
+    <form class="form">
+        <label class="form_title bold">Add New Course</label>
+
+        <div class="form_div">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title">
+        </div>
+
+        <div class="form_div prof">
+            <label for="course">Professor:</label>
+            <select id="course" name="course">
+                <option value="kalathap">Paris Kalathas</option>
+                <option value="bussch">Christopher Buss</option>
+                <option value="hessr">Robb Hess</option>
+            </select>
+        </div>
+
+        <div class="form_div">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="5" cols="19"></textarea>
+        </div>
+
+        <div class="form_div totCreds">
+            <label for="totalCredits">Total Credits:</label>
+            <input type="number" id="totalCredits" name="totalCredits" min="1" max="5">
+        </div>
+
+        <div class="form_div">
+            <label for="Prerequisites">Prerequisites:</label>
+            <input type="text" id="Prerequisites" name="Prerequisites">
+        </div>
+
+        <div class="form_div displayBlock">
+            <label for="online">Online:</label>
+            <input type="checkbox" id="online" name="online" value="yes" checked>
+        </div>
+
+        <div id="hideIt" class="hide">
+            <div class="form_div">
+                <label for="meetingTime">Meeting Time:</label>
+                <input type="text" id="meetingTime" name="meetingTime" placeholder="00:00">
+            </div>
+
+            <div class="form_div prof">
+                <label for="classroom">Classroom:</label>
+                <select id="classroom" name="course">
+                    <option value="W153">Weniger 153</option>
+                    <option value="W151">Weniger 151</option>
+                    <option value="LPSC">Linus Pauling Science Center</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<div class="form_container">
+    <form class="form" id="updateCourseForm">
+        <label class="form_title bold">Update</label>
+        <div class="form_div block">
+            <label for="idCourse">idCourse:</label>
+            <input type="text" id="idCourse" name="idCourse">
+        </div>
+
+        <div class="form_div block">
+            <label for="titleUpdate">Title:</label>
+            <input type="text" id="titleUpdate" name="titleUpdate">
+        </div>
+
+        <div class="form_div block">
+            <label for="professorUpdate">Professor:</label>
+            <input type="text" id="professorUpdate" name="professorUpdate">
+        </div>
+
+        <div class="form_div block">
+            <label for="totalEnrolledUpdate">Total Enrolled:</label>
+            <input type="text" id="totalEnrolledUpdate" name="totalEnrolledUpdate">
+        </div>
+
+        <div class="form_div displayBlock">
+            <label for="onlineUpdate">Online:</label>
+            <input type="checkbox" id="onlineUpdate" name="onlineUpdate" value="yes" checked>
+        </div>
+
+        <div id="hideItUpdate" class="hide">
+            <div class="form_div">
+                <label for="meetingTimeUpdate">Meeting Time:</label>
+                <input type="text" id="meetingTimeUpdate" name="meetingTimeUpdate" placeholder="00:00">
+            </div>
+
+            <div class="form_div prof">
+                <label for="classroomUpdate">Classroom:</label>
+                <select id="classroomUpdate" name="classroomUpdate">
+                    <option value="W153">Weniger 153</option>
+                    <option value="W151">Weniger 151</option>
+                    <option value="LPSC">Linus Pauling Science Center</option>
+                </select>
+            </div>
+        </div>
+
+        <button id="updateCourseButton" type="submit">Update</button>
+    </form>
+</div>
+
+<div class="form_container">
+    <form class="form" id="deleteCourseForm">
+        <label class="form_title bold">Delete</label>
+
+        <div class="form_div block">
+            <label for="courseDelete">idCourse:</label>
+            <input type="text" id="courseDelete" name="courseDelete">
+        </div>
+
+        <button id="deleteCourseButton" type="submit">Delete</button>
+    </form>
+</div>
