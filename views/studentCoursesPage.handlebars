@@ -19,15 +19,18 @@
         </thead>
 
         <tbody>
-        <tr>
-            <td><a href="/courseDetails/1">Intro To Assembly</a></td>
-            <td>Learning IA32, MASM and CISC Architecture</td>
-            <td>4</td>
-            <td>CS 162</td>
-            <td>A-</td>
-            <td><a href="#deleteCourseForm">Delete</a></td>
-        </tr>
+            {{#each studentCourses}}
+                <tr>
+                    <td><a href="/courseDetails/{{courseId}}">{{title}}</a></td>
+                    <td>{{description}}</td>
+                    <td>{{credits}}</td>
+                    <td>{{prereq}}</td>
+                    <td>{{grade}}</td>
+                    <td><a href="#deleteCourseForm">Delete</a></td>
+                </tr>
+            {{/each}}
         </tbody>
+
     </table>
 </div>
 
