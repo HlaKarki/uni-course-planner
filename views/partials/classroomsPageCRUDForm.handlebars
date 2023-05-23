@@ -1,0 +1,61 @@
+<div class="form_container">
+    <form class="form">
+        <label class="form_title bold">Add New Classroom</label>
+        <div class="form_div">
+            <label for="totalSeats">Total Seats:</label>
+            <input type="text" id="totalSeats" name="totalSeats">
+        </div>
+
+        <div class="form_div">
+            <label for="building">Building:</label>
+            <input type="text" id="building" name="building">
+        </div>
+
+        <div class="form_div">
+            <label for="roomNumber">Room Number:</label>
+            <input type="text" id="roomNumber" name="roomNumber">
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<div class="form_container">
+    <form class="form" id="updateClassroomForm">
+        <label class="form_title bold">Update</label>
+        <div class="form_div block">
+            <label for="idClassroom">idClassroom:</label>
+            <input type="text" id="idClassroom" name="idClassroom">
+        </div>
+
+        <div class="form_div">
+            <label for="updatetotalSeats">Total Seats:</label>
+            <input type="text" id="updatetotalSeats" name="updatetotalSeats">
+        </div>
+
+        <div class="form_div">
+            <label for="updatebuilding">Building:</label>
+            <input type="text" id="updatebuilding" name="updatebuilding">
+        </div>
+
+        <div class="form_div block">
+            <label for="roomNumber">Room Number:</label>
+            <input type="text" id="roomNumber" name="roomNumber">
+        </div>
+
+        <button id="updateProfessorButton" type="submit">Update</button>
+    </form>
+</div>
+
+<div class="form_container">
+    <form class="form" id="deleteClassroomForm">
+        <label class="form_title bold">Delete</label>
+
+        <div class="form_div block">
+            <label for="ClassroomDelete">idClassroom:</label>
+            <input type="text" id="ClassroomDelete" name="ClassroomDelete">
+        </div>
+
+        <button id="deleteClassroomButton" type="submit">Delete</button>
+    </form>
+</div>
