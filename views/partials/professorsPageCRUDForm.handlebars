@@ -1,0 +1,61 @@
+<div class="form_container">
+    <form class="form">
+        <label class="form_title bold">Add New Professor</label>
+        <div class="form_div">
+            <label for="firstname">First Name:</label>
+            <input type="text" id="firstname" name="firstname">
+        </div>
+
+        <div class="form_div">
+            <label for="lastname">Last Name:</label>
+            <input type="text" id="lastname" name="lastname">
+        </div>
+
+        <div class="form_div">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<div class="form_container">
+    <form class="form" id="updateProfForm">
+        <label class="form_title bold">Update</label>
+        <div class="form_div block">
+            <label for="idProfessor">idProfessor:</label>
+            <input type="text" id="idProfessor" name="idProfessor">
+        </div>
+
+        <div class="form_div">
+            <label for="updateFirstname">First Name:</label>
+            <input type="text" id="updateFirstname" name="updateFirstname">
+        </div>
+
+        <div class="form_div">
+            <label for="updateLastname">Last Name:</label>
+            <input type="text" id="updateLastname" name="updateLastname">
+        </div>
+
+        <div class="form_div block">
+            <label for="emailUpdate">Email:</label>
+            <input type="email" id="emailUpdate" name="emailUpdate">
+        </div>
+
+        <button id="updateProfessorButton" type="submit">Update</button>
+    </form>
+</div>
+
+<div class="form_container">
+    <form class="form" id="deleteProfForm">
+        <label class="form_title bold">Delete</label>
+
+        <div class="form_div block">
+            <label for="professorDelete">idProfessor:</label>
+            <input type="text" id="professorDelete" name="professorDelete">
+        </div>
+
+        <button id="deleteProfessorButton" type="submit">Delete</button>
+    </form>
+</div>
