@@ -14,6 +14,7 @@
             <th>Online</th>
             <th>Meeting Time</th>
             <th>Classroom</th>
+
         </tr>
         </thead>
 
@@ -23,9 +24,15 @@
             <td>Intro To Assembly</td>
             <td>Paris Kalathas</td>
             <td>60</td>
-            <td>0</td>
-            <td>17:00 MWs</td>
-            <td>Weniger 153</td>
+            <td>{{online}}</td>
+            {{#if online}}
+                <td>--</td>
+                <td>--</td>
+            {{else}}
+                <td>17:00 MWs</td>
+                <td>Weniger 153</td>
+            {{/if}}
+
         </tr>
         </tbody>
     </table>
