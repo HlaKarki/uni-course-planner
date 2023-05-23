@@ -19,34 +19,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td><a href="/studentSchedules/1">1</a></td>
-            <td><a href="/studentSchedules/1">cameron</a></td>
-            <td>cameron@CKHH.edu</td>
-            <td>CS</td>
-            <td>1234 Spring Valley, Corvallis, Oregon, 97330, USA</td>
-            <td><a href="#updateStudentForm">Update</a></td>
-            <td><a href="#deleteStudentForm">Delete</a></td>
-        </tr>
-        <tr>
-            <td><a href="/studentSchedules/2">2</a></td>
-            <td><a href="/studentSchedules/2">hla</a></td>
-            <td>hla@CKHH.edu</td>
-            <td>CS</td>
-            <td>5678 Winter Valley, Albany, Oregon, 97332, USA</td>
-            <td><a href="#updateStudentForm">Update</a></td>
-            <td><a href="#deleteStudentForm">Delete</a></td>
-        </tr>
-        <tr>
-            <td><a href="/studentSchedules/3">3</a></td>
-            <td><a href="/studentSchedules/3">trent</a></td>
-            <td>trent@CKHH.edu</td>
-            <td>CS</td>
-            <td>9999 Error Location, Corvallis, Oregon, 97330, USA</td>
-            <td><a href="#updateStudentForm">Update</a></td>
-            <td><a href="#deleteStudentForm">Delete</a></td>
-        </tr>
-
+            {{#each students}}
+                <tr>
+                    <td><a href="/studentSchedules/{{studentId}}">{{studentId}}</a></td>
+                    <td><a href="/studentSchedules/{{studentId}}">{{username}}</a></td>
+                    <td>{{email}}</td>
+                    <td>{{major}}</td>
+                    <td>{{address}}</td>
+                    <td><a href="#updateStudentForm">Update</a></td>
+                    <td><a href="#deleteStudentForm">Delete</a></td>
+                </tr>
+            {{/each}}
         </tbody>
     </table>
 </div>

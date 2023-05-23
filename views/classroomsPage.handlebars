@@ -19,30 +19,17 @@
         </thead>
 
         <tbody>
-        <tr>
-            <td>1</td>
-            <td>75</td>
-            <td>Weniger</td>
-            <td>153</td>
-            <td><a href="#updateClassroomForm">Update</a></td>
-            <td><a href="#deleteClassroomForm">Delete</a></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>155</td>
-            <td>Weniger</td>
-            <td>151</td>
-            <td><a href="#updateClassroomForm">Update</a></td>
-            <td><a href="#deleteClassroomForm">Delete</a></td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>105</td>
-            <td>Linus Pauling Science Center</td>
-            <td>125</td>
-            <td><a href="#updateClassroomForm">Update</a></td>
-            <td><a href="#deleteClassroomForm">Delete</a></td>
-        </tr>
+        {{#each classrooms}}
+            <tr>
+                <td>{{classroomId}}</td>
+                <td>{{totalSeats}}</td>
+                <td>{{building}}</td>
+                <td>{{roomNumber}}</td>
+                <td><a href="#updateClassroomForm">Update</a></td>
+                <td><a href="#deleteClassroomForm">Delete</a></td>
+            </tr>
+        {{/each}}
+
         </tbody>
     </table>
 </div>
