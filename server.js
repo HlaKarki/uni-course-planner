@@ -12,10 +12,6 @@ app.set('view engine', 'handlebars')
 
 app.use(express.static('public'))
 
-app.get('/', (req, res) => {
-    res.status(200).sendFile(__dirname+'/public/index.html')
-})
-
 app.get('/students', (req,res,next) => {
     res.status(200).render('studentsPage')
 })
