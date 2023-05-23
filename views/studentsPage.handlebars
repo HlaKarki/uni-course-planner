@@ -1,0 +1,159 @@
+<div class="table_container">
+    <div id="explain_to_user">
+        To check the schedule of a student, please click the values that are <label class="underline">underlined</label>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>idStudent</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Major</th>
+            <th>Address</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><a href="../studentSchedulesPage/studentSchedulesPage.html?_ijt=ni26jp9mvcg27m5q4bg3a4musn&_ij_reload=RELOAD_ON_SAVE">1</a></td>
+            <td><a href="../studentSchedulesPage/studentSchedulesPage.html?_ijt=ni26jp9mvcg27m5q4bg3a4musn&_ij_reload=RELOAD_ON_SAVE">cameron</a></td>
+            <td>cameron@CKHH.edu</td>
+            <td>CS</td>
+            <td>1234 Spring Valley, Corvallis, Oregon, 97330, USA</td>
+<!--            <td><a href="#updateStudentForm">Update</a></td>-->
+<!--            <td><a href="#deleteStudentForm">Delete</a></td>-->
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>hla</td>
+            <td>hla@CKHH.edu</td>
+            <td>CS</td>
+            <td>5678 Winter Valley, Albany, Oregon, 97332, USA</td>
+<!--            <td><a href="#updateStudentForm">Update</a></td>-->
+<!--            <td><a href="#deleteStudentForm">Delete</a></td>-->
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>trent</td>
+            <td>trent@CKHH.edu</td>
+            <td>CS</td>
+            <td>9999 Error Location, Corvallis, Oregon, 97330, USA</td>
+<!--            <td><a href="#updateStudentForm">Update</a></td>-->
+<!--            <td><a href="#deleteStudentForm">Delete</a></td>-->
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div class="form_container">
+    <form class="form">
+        <label class="form_title bold">New Student Info</label>
+        <div class="form_div">
+            <label for="username">*Username:</label>
+            <input type="text" id="username" name="username">
+        </div>
+
+        <div class="form_div">
+            <label for="email">*Email:</label>
+            <input type="email" id="email" name="email">
+        </div>
+
+        <div class="form_div">
+            <label for="major">*Major:</label>
+            <input type="text" id="major" name="major">
+        </div>
+
+        <label class="form_div address">Student Address</label>
+
+        <div class="form_div">
+            <label for="streetName">Street Name:</label>
+            <input type="text" id="streetName" name="streetName">
+        </div>
+
+        <div class="form_div">
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city">
+        </div>
+
+        <div class="form_div">
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state">
+        </div>
+
+        <div class="form_div">
+            <label for="zipcode">Zipcode:</label>
+            <input type="text" id="zipcode" name="zipcode">
+        </div>
+
+        <div class="form_div">
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country">
+        </div>
+
+        <button id="addStudentButton" type="submit">Submit</button>
+    </form>
+</div>
+
+<div class="form_container">
+    <form class="form" id="updateStudentForm">
+        <label class="form_title bold">Update</label>
+        <div class="form_div block">
+            <label for="idStudent">idStudent:</label>
+            <input type="text" id="idStudent" name="idStudent">
+        </div>
+
+        <div class="form_div block">
+            <label for="emailUpdate">Email:</label>
+            <input type="email" id="emailUpdate" name="emailUpdate">
+        </div>
+
+        <div class="form_div block">
+            <label for="majorUpdate">Major:</label>
+            <input type="text" id="majorUpdate" name="majorUpdate">
+        </div>
+
+        <label class="form_div address">Student Address</label>
+
+        <div class="form_div">
+            <label for="streetNameUpdate">Street Name:</label>
+            <input type="text" id="streetNameUpdate" name="streetNameUpdate">
+        </div>
+
+        <div class="form_div">
+            <label for="cityUpdate">City:</label>
+            <input type="text" id="cityUpdate" name="cityUpdate">
+        </div>
+
+        <div class="form_div">
+            <label for="stateUpdate">State:</label>
+            <input type="text" id="stateUpdate" name="stateUpdate">
+        </div>
+
+        <div class="form_div">
+            <label for="zipcodeUpdate">Zipcode:</label>
+            <input type="text" id="zipcodeUpdate" name="zipcodeUpdate">
+        </div>
+
+        <div class="form_div">
+            <label for="countryUpdate">Country:</label>
+            <input type="text" id="countryUpdate" name="countryUpdate">
+        </div>
+
+        <button id="updateStudentButton" type="submit">Update</button>
+    </form>
+</div>
+
+<div class="form_container">
+    <form class="form" id="deleteStudentForm">
+        <label class="form_title bold">Delete</label>
+
+        <div class="form_div block">
+            <label for="studentDelete">idStudent:</label>
+            <input type="text" id="studentDelete" name="studentDelete">
+        </div>
+
+        <button id="deleteStudentButton" type="submit">Delete</button>
+    </form>
+</div>
