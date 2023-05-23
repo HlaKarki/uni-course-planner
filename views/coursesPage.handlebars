@@ -22,27 +22,27 @@
         </thead>
 
         <tbody>
-        {{#each courses}}
-            <tr>
-                <td>{{id}}</td>
-                <td><a href="/courseDetails/{{id}}">{{name}}</a></td>
-                <td>{{instructor}}</td>
-                <td>{{totalEnrolled}}</td>
-                {{#if online}}
-                    <td>Yes</td>
-                    <td>--</td>
-                    <td>--</td>
-                {{else}}
-                    <td>No</td>
-                    <td>{{time}}</td>
-                    <td>{{location}}</td>
-                {{/if}}
-                <td><a href="#updateCourseForm">Update</a></td>
-                <td><a href="#deleteCourseForm">Delete</a></td>
-            </tr>
-        {{/each}}
-
+            {{#each courses}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td><a href="/courseDetails/{{id}}">{{name}}</a></td>
+                    <td>{{instructor}}</td>
+                    <td>{{totalEnrolled}}</td>
+                    {{#if online}}
+                        <td>Yes</td>
+                        <td>--</td>
+                        <td>--</td>
+                    {{else}}
+                        <td>No</td>
+                        <td>{{time}}</td>
+                        <td>{{location}}</td>
+                    {{/if}}
+                    <td><a href="#updateCourseForm">Update</a></td>
+                    <td><a href="#deleteCourseForm">Delete</a></td>
+                </tr>
+            {{/each}}
         </tbody>
+
     </table>
 </div>
 
