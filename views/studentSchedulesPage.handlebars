@@ -1,0 +1,30 @@
+<div id="page_mini_title">
+    <h2>{{studentName}}'s Schedules</h2>
+</div>
+
+<div class="table_container">
+    <div id="explain_to_user">
+        To check the courses added to a term, please click the <label class="underline">underlined</label> value
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>idSchedule</th>
+            <th>Total Credits</th>
+            <th>Term</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>2</td>
+            <td>20</td>
+            <td><a href="/studentCourses/{{studentId}}">Spring 2023</a></td>
+            <td><a href="#deleteScheduleButton">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+{{>studentSchedulesPageCRUDForm}}

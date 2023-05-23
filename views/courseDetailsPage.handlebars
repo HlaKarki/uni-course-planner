@@ -1,0 +1,39 @@
+<div id="page_mini_title">
+    <h2>{{courseName}}</h2>
+</div>
+
+<div class="table_container">
+
+    <table>
+        <thead>
+        <tr>
+            <th>idCourse</th>
+            <th>Course Title</th>
+            <th>Professor</th>
+            <th>Total Enrolled</th>
+            <th>Online</th>
+            <th>Meeting Time</th>
+            <th>Classroom</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Intro To Assembly</td>
+            <td>Paris Kalathas</td>
+            <td>60</td>
+            <td>{{online}}</td>
+            {{#if online}}
+                <td>--</td>
+                <td>--</td>
+            {{else}}
+                <td>17:00 MWs</td>
+                <td>Weniger 153</td>
+            {{/if}}
+
+        </tr>
+        </tbody>
+    </table>
+</div>

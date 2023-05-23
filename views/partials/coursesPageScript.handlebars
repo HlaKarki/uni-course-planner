@@ -1,0 +1,23 @@
+<script>
+    const onlineCheckbox = document.getElementById('online');
+    const additionalFields = document.getElementById('hideIt');
+
+    const onlineCheckbox2 = document.getElementById('onlineUpdate');
+    const additionalFields2 = document.getElementById('hideItUpdate');
+
+    onlineCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            additionalFields.classList.add('hide');
+        } else {
+            additionalFields.classList.remove('hide');
+        }
+    });
+
+    onlineCheckbox2.addEventListener('change', function() {
+        if (this.checked) {
+            additionalFields2.classList.add('hide');
+        } else {
+            additionalFields2.classList.remove('hide');
+        }
+    });
+</script>
