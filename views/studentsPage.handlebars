@@ -27,7 +27,7 @@
                     <td>{{major}}</td>
                     <td>{{address}}</td>
                     <td><a href="#updateStudentForm">Update</a></td>
-                    <td><a href="#deleteStudentForm">Delete</a></td>
+                    <td><a href="#deleteStudentForm" onclick="fillDeleteForm('{{studentId}}')">Delete</a></td>
                 </tr>
             {{/each}}
         </tbody>
@@ -35,3 +35,9 @@
 </div>
 
 {{>studentsPageCRUDForm}}
+
+<script>
+    function fillDeleteForm(studentId) {
+        document.getElementById('studentDelete').value = studentId;
+    }
+</script>
