@@ -1,5 +1,6 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
+const db = require('./db-connector')
 
 let port = process.env.PORT || 3000
 const app = express()
@@ -13,32 +14,27 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
 app.get('/students', (req,res,next) => {
-    const students = [
-        {
-            studentId: 1,
-            username: "cameron",
-            email: "cameron@ckhh.edu",
-            major: "CS",
-            address: "1234 Spring Valley, Corvallis, Oregon, 97330, USA"
-        },
-        {
-            studentId: 2,
-            username: "hla",
-            email: "hla@ckhh.edu",
-            major: "CS",
-            address: "5678 Summer Valley, Corvallis, Albany, 97332, USA"
-        },
-        {
-            studentId: 3,
-            username: "trenton",
-            email: "trenton@ckhh.edu",
-            major: "CS",
-            address: "9999 Winter Valley, Corvallis, Oregon, 97330, USA"
-        }
-    ]
-    res.status(200).render('studentsPage', {
-        students
+    const getStudents = `SELECT Students.idStudent, username, email, major, CONCAT(streetName, ", ", state, ", ", zipCode) AS address
+FROM Students NATURAL JOIN Addresses ORDER BY idStudent ASC;`
+    const allStudents = []
+    db.pool.query(getStudents, (err, students, fields) => {
+        // console.log(students);
+        let individualStudent = {}
+        students.map((student, index) => {
+            individualStudent = {
+                studentId: parseInt(student.idStudent, 10),
+                username: student.username,
+                email: student.email,
+                major: student.major,
+                address: student.address
+            }
+            allStudents.push(individualStudent)
+        })
+        res.status(200).render('studentsPage', {
+            allStudents
+        })
     })
+
 })
 
 app.get('/studentSchedules/:studentID', (req, res, next) => {
