@@ -1,0 +1,29 @@
+{
+  "name": "cs340project",
+  "version": "1.0.0",
+  "description": "University Course Schedule Planner",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "handlebars views/studentsPage.handlebars -f public/studentsPageTemplate.js",
+    "prestart": "npm run build",
+    "start": "node server.js",
+    "dev": "nodemon --ext html,css,js,handlebars server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HlaKarki/CS340Project.git"
+  },
+  "author": "Hla Htun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HlaKarki/CS340Project/issues"
+  },
+  "homepage": "https://github.com/HlaKarki/CS340Project#readme",
+  "devDependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.7",
+    "handlebars": "^4.7.7",
+    "nodemon": "^2.0.22"
+  }
+}
