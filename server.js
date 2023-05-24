@@ -2,6 +2,9 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const db = require('./db-connector')
 
+const bodyParser = require('body-parser')
+
+
 let port = process.env.PORT || 3000
 const app = express()
 
@@ -13,12 +16,26 @@ app.set('view engine', 'handlebars')
 
 app.use(express.static('public'))
 
+// Parse URL-encoded bodies (if form data is sent with 'content-type': 'application/x-www-form-urlencoded')
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Parse JSON bodies (if form data is sent with 'content-type': 'application/json')
+app.use(bodyParser.json());
+
 app.get('/students', (req,res,next) => {
-    const getStudents = `SELECT Students.idStudent, username, email, major, CONCAT(streetName, ", ", state, ", ", zipCode) AS address
-FROM Students NATURAL JOIN Addresses ORDER BY idStudent ASC;`
+    const getStudents = `
+                            SELECT Students.idStudent, username, email, major, CONCAT(streetName, ", ", state, ", ", zipCode) AS address
+                            FROM Students
+                            JOIN Addresses ON Students.idStudent = Addresses.idStudent
+                            WHERE Addresses.idAddress = (
+                              SELECT MAX(idAddress)
+                              FROM Addresses
+                              WHERE Addresses.idStudent = Students.idStudent
+                            )
+                            ORDER BY Students.idStudent ASC;
+                        `
     const allStudents = []
     db.pool.query(getStudents, (err, students, fields) => {
-        // console.log(students);
         let individualStudent = {}
         students.map((student, index) => {
             individualStudent = {
@@ -26,15 +43,62 @@ FROM Students NATURAL JOIN Addresses ORDER BY idStudent ASC;`
                 username: student.username,
                 email: student.email,
                 major: student.major,
+                // address: "123blah"
                 address: student.address
             }
             allStudents.push(individualStudent)
         })
+        console.log(allStudents);
         res.status(200).render('studentsPage', {
             allStudents
         })
     })
+})
 
+app.post('/addStudent', async (req, res, next) => {
+    const form_input = req.body
+
+    const insertStudent = `INSERT INTO Students(username, email, major) VALUES (?, ?, ?);`
+    const insertAddress = `INSERT INTO Addresses(idStudent, streetName, city, state, zipCode, country) VALUES(?, ?, ?, ?, ?, ?);`
+    const getStudentId = `SELECT idStudent FROM Students ORDER BY idStudent DESC LIMIT 1;`
+
+    db.pool.query(insertStudent, [ form_input["username"], form_input["email"], form_input["major"] ], (err, newStudents, fields) => {
+        if (err){
+            console.log(err);
+            res.sendStatus(400)
+        }
+        else {
+            console.log(newStudents);
+            db.pool.query(getStudentId, (err, id, fields)=>{
+                console.log("Showing latest student id");
+                console.log(id[0].idStudent)
+                db.pool.query(insertAddress, [ id[0].idStudent, form_input["streetName"], form_input["city"], form_input["state"], form_input["zipcode"], form_input["country"] ], (err, newAddress, fields) => {
+                    if (err) {
+                        console.log(err)
+                        res.sendStatus(400)
+                    }
+                    else {
+                        console.log("== new Address: ", newAddress);
+                        res.redirect('/students')
+                    }
+                })
+            })
+        }
+    })
+})
+
+app.post('/deleteStudent', (req, res, next) => {
+    const form_input = req.body
+    let idStudent = form_input["studentDelete"]
+    const deleteStudent = `DELETE FROM Students WHERE idStudent = ${idStudent};`
+
+    db.pool.query(deleteStudent, (err, students, fields) => {
+        if (err) { res.sendStatus(400)}
+        else {
+            console.log(students);
+            res.redirect('/students')
+        }
+    })
 })
 
 app.get('/studentSchedules/:studentID', (req, res, next) => {
