@@ -6,6 +6,8 @@ const port = process.env.PORT || 3000
 const app = express()
 
 const CRUDStudents = require('./CRUDStudents')
+const CRUDProfessors = require('./CRUDProfessors')
+
 
 app.engine('handlebars', exphbs.engine({
     defaultLayout: "main"
@@ -16,10 +18,11 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-CRUDStudents.getStudent(app, db)
-CRUDStudents.addStudent(app, db)
-CRUDStudents.updateStudent(app, db)
-CRUDStudents.deleteStudent(app, db)
+// Students Entity CRUD queries
+CRUDStudents.addStudent(app, db)        // CREATE
+CRUDStudents.getStudent(app, db)        // READ
+CRUDStudents.updateStudent(app, db)     // UPDATE
+CRUDStudents.deleteStudent(app, db)     // DELETE
 
 app.get('/studentSchedules/:studentID', (req, res, next) => {
     const studentId = parseInt(req.params.studentID, 10)
@@ -111,31 +114,11 @@ app.get("/courseDetails/:courseId", (req, res, next) => {
     })
 })
 
-app.get("/professors", (req, res, next) => {
-    const professors = [
-        {
-            professorId: 1,
-            firstName: "Paris",
-            lastName: "Kalathas",
-            email: "kalathap@oregonstate.edu"
-        },
-        {
-            professorId: 2,
-            firstName: "Christopher",
-            lastName: "Buss",
-            email: "bussch@oregonstate.edu"
-        },
-        {
-            professorId: 3,
-            firstName: "Robb",
-            lastName: "Hess",
-            email: "hessro@oregonstate.edu"
-        }
-    ]
-    res.status(200).render('professorsPage', {
-        professors
-    })
-})
+// Professors Entity CRUD queries
+CRUDProfessors.getProfessors(app, db)
+CRUDProfessors.addProfessor(app, db)
+CRUDProfessors.deleteProfessor(app, db)
+CRUDProfessors.updateProfessor(app, db)
 
 app.get("/classrooms", (req, res, next) => {
     const classrooms = [
