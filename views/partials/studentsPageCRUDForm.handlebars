@@ -1,46 +1,46 @@
 <div class="form_container">
     <form class="form" id="add-student-form" method="POST" action="/addStudent">
-        <label class="form_title bold">New Student Info</label>
+        <label class="form_title bold">Student Details</label>
         <div class="form_div">
             <label for="username">*Username:</label>
-            <input type="text" id="username" name="username">
+            <input type="text" id="username" name="username" required>
         </div>
 
         <div class="form_div">
             <label for="email">*Email:</label>
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" required>
         </div>
 
         <div class="form_div">
             <label for="major">*Major:</label>
-            <input type="text" id="major" name="major">
+            <input type="text" id="major" name="major" required>
         </div>
 
-        <label class="form_div address">Student Address</label>
+        <label class="form_div address form_title bold">Student Address</label>
 
         <div class="form_div">
-            <label for="streetName">Street Name:</label>
-            <input type="text" id="streetName" name="streetName">
-        </div>
-
-        <div class="form_div">
-            <label for="city">City:</label>
-            <input type="text" id="city" name="city">
+            <label for="streetName">*Street Name:</label>
+            <input type="text" id="streetName" name="streetName" required>
         </div>
 
         <div class="form_div">
-            <label for="state">State:</label>
-            <input type="text" id="state" name="state">
+            <label for="city">*City:</label>
+            <input type="text" id="city" name="city" required>
         </div>
 
         <div class="form_div">
-            <label for="zipcode">Zipcode:</label>
-            <input type="text" id="zipcode" name="zipcode">
+            <label for="state">*State:</label>
+            <input type="text" id="state" name="state" required>
         </div>
 
         <div class="form_div">
-            <label for="country">Country:</label>
-            <input type="text" id="country" name="country">
+            <label for="zipcode">*Zipcode:</label>
+            <input type="number" id="zipcode" name="zipcode" required>
+        </div>
+
+        <div class="form_div">
+            <label for="country">*Country:</label>
+            <input type="text" id="country" name="country" required>
         </div>
 
         <button id="addStudentButton" type="submit">Submit</button>
@@ -48,11 +48,16 @@
 </div>
 
 <div class="form_container">
-    <form class="form" id="updateStudentForm">
-        <label class="form_title bold">Update</label>
+    <form class="form" id="updateStudentForm" method="POST" action="/updateStudent">
+        <label class="form_title bold">Update Student Details</label>
         <div class="form_div block">
             <label for="idStudent">idStudent:</label>
             <input type="text" id="idStudent" name="idStudent">
+        </div>
+
+        <div class="form_div block">
+            <label for="usernameUpdate">Username:</label>
+            <input type="text" id="usernameUpdate" name="usernameUpdate">
         </div>
 
         <div class="form_div block">
@@ -65,7 +70,7 @@
             <input type="text" id="majorUpdate" name="majorUpdate">
         </div>
 
-        <label class="form_div address">Student Address</label>
+        <label class="form_div address form_title bold">Update Student Address</label>
 
         <div class="form_div">
             <label for="streetNameUpdate">Street Name:</label>
@@ -98,7 +103,7 @@
 
 <div class="form_container">
     <form class="form" id="deleteStudentForm" method="POST" action="/deleteStudent">
-        <label class="form_title bold">Delete</label>
+        <label class="form_title bold">Delete Student</label>
 
         <div class="form_div block">
             <label for="studentDelete">idStudent:</label>
