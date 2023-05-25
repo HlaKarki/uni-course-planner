@@ -60,7 +60,7 @@ module.exports.updateProfessor = function(app, db){
             db.pool.query(updateProfessor, (err, updated, fields)=>{
                 if (err) {res.sendStatus(400)}
                 else{
-                    console.log("=== new updated professors: ", updated);
+                    // console.log("=== new updated professors: ", updated);
                     res.redirect('/professors')
                 }
             })
