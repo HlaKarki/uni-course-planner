@@ -1,36 +1,28 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const db = require('./db-connector')
-
 const bodyParser = require('body-parser')
-
-
-let port = process.env.PORT || 3000
+const port = process.env.PORT || 3000
 const app = express()
 
 app.engine('handlebars', exphbs.engine({
     defaultLayout: "main"
 }))
-
 app.set('view engine', 'handlebars')
 
 app.use(express.static('public'))
-
-// Parse URL-encoded bodies (if form data is sent with 'content-type': 'application/x-www-form-urlencoded')
 app.use(bodyParser.urlencoded({ extended: false }));
-
-// Parse JSON bodies (if form data is sent with 'content-type': 'application/json')
 app.use(bodyParser.json());
 
 app.get('/students', (req,res,next) => {
     const getStudents = `
-                            SELECT Students.idStudent, username, email, major, CONCAT(streetName, ", ", state, ", ", zipCode) AS address
+                            SELECT Students.idStudent, username, email, major, CONCAT(streetName, ", ", city, ", ", state, ", ", zipCode, ", ", country) AS address
                             FROM Students
                             JOIN Addresses ON Students.idStudent = Addresses.idStudent
                             WHERE Addresses.idAddress = (
-                              SELECT MAX(idAddress)
-                              FROM Addresses
-                              WHERE Addresses.idStudent = Students.idStudent
+                                SELECT MAX(idAddress)
+                                FROM Addresses
+                                WHERE Addresses.idStudent = Students.idStudent
                             )
                             ORDER BY Students.idStudent ASC;
                         `
@@ -43,12 +35,11 @@ app.get('/students', (req,res,next) => {
                 username: student.username,
                 email: student.email,
                 major: student.major,
-                // address: "123blah"
                 address: student.address
             }
             allStudents.push(individualStudent)
         })
-        console.log(allStudents);
+        // console.log("=== new students: ", allStudents);
         res.status(200).render('studentsPage', {
             allStudents
         })
@@ -68,20 +59,56 @@ app.post('/addStudent', async (req, res, next) => {
             res.sendStatus(400)
         }
         else {
-            console.log(newStudents);
+            // console.log("== new Students: ", newStudents);
             db.pool.query(getStudentId, (err, id, fields)=>{
-                console.log("Showing latest student id");
-                console.log(id[0].idStudent)
                 db.pool.query(insertAddress, [ id[0].idStudent, form_input["streetName"], form_input["city"], form_input["state"], form_input["zipcode"], form_input["country"] ], (err, newAddress, fields) => {
                     if (err) {
                         console.log(err)
                         res.sendStatus(400)
                     }
                     else {
-                        console.log("== new Address: ", newAddress);
+                        // console.log("== new Address: ", newAddress);
                         res.redirect('/students')
                     }
                 })
+            })
+        }
+    })
+})
+
+app.post('/updateStudent', (req, res, next) => {
+    const form_input = req.body
+    const updateStudent = `
+                            UPDATE Students
+                            SET username = '${form_input["usernameUpdate"]}',
+                                email = '${form_input["emailUpdate"]}',
+                                major = '${form_input["majorUpdate"]}' 
+                            WHERE idStudent = '${form_input["idStudent"]}';
+                        `
+    const updateAddress = `
+                            UPDATE Addresses
+                            SET streetName = '${form_input["streetNameUpdate"]}',
+                                city = '${form_input["cityUpdate"]}',
+                                state = '${form_input["stateUpdate"]}',
+                                zipCode = '${form_input["zipcodeUpdate"]}',
+                                country = '${form_input["countryUpdate"]}'
+                            WHERE idStudent = '${form_input["idStudent"]}'
+                            AND idAddress = (
+                                              SELECT MAX(idAddress)
+                                              FROM Addresses
+                                              WHERE idStudent = '${form_input["idStudent"]}'
+                                            );
+                        `
+    db.pool.query(updateStudent, (err, updated, fields)=>{
+        if (err) {res.sendStatus(400)}
+        else{
+            // console.log("=== new updated Students: ", updated);
+            db.pool.query(updateAddress, (err, newAddress, fields)=>{
+                if(err) {res.sendStatus(400)}
+                else {
+                    // console.log(newAddress);
+                    res.redirect('/students')
+                }
             })
         }
     })
@@ -95,7 +122,7 @@ app.post('/deleteStudent', (req, res, next) => {
     db.pool.query(deleteStudent, (err, students, fields) => {
         if (err) { res.sendStatus(400)}
         else {
-            console.log(students);
+            // console.log(students);
             res.redirect('/students')
         }
     })
