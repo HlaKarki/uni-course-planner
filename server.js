@@ -24,33 +24,8 @@ CRUDStudents.getStudent(app, db)        // READ
 CRUDStudents.updateStudent(app, db)     // UPDATE
 CRUDStudents.deleteStudent(app, db)     // DELETE
 
-app.get('/studentSchedules/:studentID', (req, res, next) => {
-    const studentId = parseInt(req.params.studentID, 10)
-    let studentName = ""
-    if (studentId === 1){
-        studentName = "Cameron"
-    }
-    else if (studentId === 2){
-        studentName = "Hla"
-    }
-    else if (studentId === 3){
-        studentName = "Trenton"
-    }
-    console.log("== Student id: ", studentId)
 
-    const studentSchedules = [
-        {
-            scheduleId: 1,
-            totalCredits: 16,
-            term: "Spring 2023",
-            studentId: 1
-        }
-    ]
-    res.status(200).render('studentSchedulesPage', {
-        studentName: studentName,
-        studentSchedules
-    })
-})
+CRUDStudents.getStudentSchedules(app, db)
 
 app.get('/studentCourses/:studentId', (req, res, next) => {
     const studentId = parseInt(req.params.studentId, 10)
