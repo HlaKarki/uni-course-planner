@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <div id="page_mini_title">
     <h2>Student Data</h2>
 </div>
@@ -26,7 +27,7 @@
                     <td>{{email}}</td>
                     <td>{{major}}</td>
                     <td>{{address}}</td>
-                    <td><a href="#updateStudentForm">Update</a></td>
+                    <td><a href="#updateStudentForm" onclick="fillUpdateForm('{{studentId}}', '{{username}}', '{{email}}', '{{major}}', '{{address}}')">Update</a></td>
                     <td><a href="#deleteStudentForm" onclick="fillDeleteForm('{{studentId}}')">Delete</a></td>
                 </tr>
             {{/each}}
@@ -39,5 +40,20 @@
 <script>
     function fillDeleteForm(studentId) {
         document.getElementById('studentDelete').value = studentId;
+    }
+
+    function fillUpdateForm(studentId, username, email, major, address) {
+        document.getElementById('idStudent').value = studentId;
+        document.getElementById('usernameUpdate').value = username;
+        document.getElementById('emailUpdate').value = email;
+        document.getElementById('majorUpdate').value = major;
+
+        const [streetName, city, state, zipCode, country] = address.split(',').map(part => part.trim());
+
+        document.getElementById("streetNameUpdate").value = streetName;
+        document.getElementById("cityUpdate").value = city;
+        document.getElementById("stateUpdate").value = state;
+        document.getElementById("zipcodeUpdate").value = zipCode;
+        document.getElementById("countryUpdate").value = country;
     }
 </script>
