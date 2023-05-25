@@ -1,5 +1,5 @@
 <div class="form_container">
-    <form class="form">
+    <form class="form" method="POST" action="/addProfessor">
         <label class="form_title bold">Add New Professor</label>
         <div class="form_div">
             <label for="firstname">First Name:</label>
@@ -21,7 +21,7 @@
 </div>
 
 <div class="form_container">
-    <form class="form" id="updateProfForm">
+    <form class="form" id="updateProfForm" method="POST" action="/updateProfessor">
         <label class="form_title bold">Update</label>
         <div class="form_div block">
             <label for="idProfessor">idProfessor:</label>
@@ -48,7 +48,7 @@
 </div>
 
 <div class="form_container">
-    <form class="form" id="deleteProfForm">
+    <form class="form" id="deleteProfForm" method="POST" action="/deleteProfessor">
         <label class="form_title bold">Delete</label>
 
         <div class="form_div block">
