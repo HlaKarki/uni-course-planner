@@ -15,14 +15,14 @@
         </tr>
         </thead>
         <tbody>
-            {{#each professors}}
+            {{#each allProfessors}}
                 <tr>
                     <td>{{professorId}}</td>
                     <td>{{firstName}}</td>
                     <td>{{lastName}}</td>
                     <td>{{email}}</td>
-                    <td><a href="#updateProfForm">Update</a></td>
-                    <td><a href="#deleteProfForm">Delete</a></td>
+                    <td><a href="#updateProfForm" onclick="fillUpdateForm('{{professorId}}', '{{firstName}}', '{{lastName}}', '{{email}}')">Update</a></td>
+                    <td><a href="#deleteProfForm" onclick="fillDeleteForm('{{professorId}}')">Delete</a></td>
                 </tr>
             {{/each}}
         </tbody>
@@ -30,3 +30,16 @@
 </div>
 
 {{>professorsPageCRUDForm}}
+
+<script>
+    function fillDeleteForm(professorId) {
+        document.getElementById('professorDelete').value = professorId;
+    }
+
+    function fillUpdateForm(studentId, firstname, lastname, email) {
+        document.getElementById('idProfessor').value = studentId;
+        document.getElementById('updateFirstname').value = firstname;
+        document.getElementById('updateLastname').value = lastname;
+        document.getElementById('emailUpdate').value = email;
+    }
+</script>
