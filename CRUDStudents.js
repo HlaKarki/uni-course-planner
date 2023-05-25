@@ -128,3 +128,41 @@ module.exports.deleteStudent = function(app, db){
         })
     )
 }
+
+module.exports.getStudentSchedules = function(app, db){
+    return (
+        app.get('/studentSchedules/:studentID', (req, res, next) => {
+            const idStudent = parseInt(req.params.studentID, 10)
+            const getStudentSchedule = `SELECT * FROM Schedules WHERE idStudent = ${idStudent};`
+            const getStudentName = `SELECT username FROM Students WHERE idStudent = ${idStudent};`
+            let studentName = ""
+
+            db.pool.query(getStudentName, (err, receivedName, fields)=>{
+                if (err) { res.sendStatus(400) }
+                else {
+                    studentName = receivedName[0].username
+                    db.pool.query(getStudentSchedule, (err, schedules, fields)=>{
+                        let studentSchedules = []
+                        if (err) { res.sendStatus(400) }
+                        else{
+                            console.log(schedules);
+                            schedules.map(schedule => {
+                                let individualStudents = {
+                                    idSchedule: schedule.idSchedule,
+                                    totalCreditHours: schedule.totalCreditHours,
+                                    idStudent: schedule.idStudent,
+                                    term: schedule.term
+                                }
+                                studentSchedules.push(individualStudents)
+                            })
+                            res.status(200).render('studentSchedulesPage', {
+                                studentName: studentName,
+                                studentSchedules
+                            })
+                        }
+                    })
+                }
+            })
+        })
+    )
+}
