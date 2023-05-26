@@ -36,7 +36,7 @@
 
 .column_title ~ div {
     margin: 1rem 0;
-    font-size: 0.75rem;
+    font-size: 1.2rem;
 }
 
 table {
@@ -160,3 +160,26 @@ button[type="submit"]:hover {
     margin-bottom: 1rem;
 }
 /*-----------------------------*/
+
+
+/*-----proper styling------*/
+body {
+    background-image: url(https://grainy-gradients.vercel.app/noise.svg);
+    background-color: #5a2f38;
+    color: black;
+    /*font-family: 'Roboto Condensed', sans-serif;*/
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.5rem;
+}
+
+a {
+    text-decoration: none;
+    font-style: italic;
+    font-weight: bold;
+    /*color: #ff9c9c;*/
+    color: #ffbaba;
+}
+
+a:hover{
+    text-decoration: underline;
+}
