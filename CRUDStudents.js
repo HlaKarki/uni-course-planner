@@ -1,5 +1,4 @@
-const db = require("./db-connector");
-module.exports.getStudent = function(app, db){
+module.exports.getStudent = (app, db) => {
     return (
         app.get('/students', (req, res, next) => {
             const getStudents = `
@@ -35,7 +34,7 @@ module.exports.getStudent = function(app, db){
     )
 }
 
-module.exports.addStudent = function(app, db){
+module.exports.addStudent = (app, db) => {
     return (
         app.post('/addStudent', async (req, res, next) => {
             const form_input = req.body
@@ -69,7 +68,7 @@ module.exports.addStudent = function(app, db){
     )
 }
 
-module.exports.updateStudent = function(app, db){
+module.exports.updateStudent = (app, db) => {
     return (
         app.post('/updateStudent', (req, res, next) => {
             const form_input = req.body
@@ -111,7 +110,7 @@ module.exports.updateStudent = function(app, db){
     )
 }
 
-module.exports.deleteStudent = function(app, db){
+module.exports.deleteStudent = (app, db) => {
     return (
         app.post('/deleteStudent', (req, res, next) => {
             const form_input = req.body
@@ -129,23 +128,23 @@ module.exports.deleteStudent = function(app, db){
     )
 }
 
-module.exports.getStudentSchedules = function(app, db){
+module.exports.getStudentSchedules = (app, db) => {
     return (
         app.get('/studentSchedules/:studentID', (req, res, next) => {
             const idStudent = parseInt(req.params.studentID, 10)
             const getStudentSchedule = `SELECT * FROM Schedules WHERE idStudent = ${idStudent};`
             const getStudentName = `SELECT username FROM Students WHERE idStudent = ${idStudent};`
-            let studentName = ""
 
             db.pool.query(getStudentName, (err, receivedName, fields)=>{
                 if (err) { res.sendStatus(400) }
                 else {
-                    studentName = receivedName[0].username
+                    const notCapStudentName = receivedName[0].username
+                    const studentName = notCapStudentName.charAt(0).toUpperCase() + notCapStudentName.slice(1);
                     db.pool.query(getStudentSchedule, (err, schedules, fields)=>{
                         let studentSchedules = []
                         if (err) { res.sendStatus(400) }
                         else{
-                            console.log(schedules);
+                            // console.log(schedules);
                             schedules.map(schedule => {
                                 let individualStudents = {
                                     idSchedule: schedule.idSchedule,
@@ -158,6 +157,53 @@ module.exports.getStudentSchedules = function(app, db){
                             res.status(200).render('studentSchedulesPage', {
                                 studentName: studentName,
                                 studentSchedules
+                            })
+                        }
+                    })
+                }
+            })
+        })
+    )
+}
+
+module.exports.getStudentCourses = (app, db) => {
+    return (
+        app.get('/studentCourses/:idSchedule', (req, res, next) => {
+            const idSchedule = req.params.idSchedule
+            const getStudentCourses = `
+                                        SELECT idCourse, title AS course, description as description, creditHours AS credits, prerequisites AS prereq, grade AS grade
+                                        FROM CourseDetails NATURAL JOIN Courses NATURAL JOIN CourseSchedules AS CS
+                                        WHERE CS.idCourseSchedule = ${idSchedule};
+                                       `
+            const getStudentName =  `
+                                        SELECT username FROM Students NATURAL JOIN Schedules WHERE idSchedule = ${idSchedule};
+                                    `
+            db.pool.query(getStudentName, (err, receivedUsername, fields) => {
+                if (err) { res.sendStatus(400) }
+                else {
+                    const notCapStudentName = receivedUsername[0].username
+                    const studentName = notCapStudentName.charAt(0).toUpperCase() + notCapStudentName.slice(1);
+                    // console.log(capitalizedStudentName);
+                    db.pool.query(getStudentCourses, (err, receivedCourses, fields)=>{
+                        let studentCourses = []
+                        if (err) { res.sendStatus(400) }
+                        else{
+                            // console.log(receivedCourses);
+                            receivedCourses.map(course => {
+                                let individualCourse = {
+                                    course: course.course,
+                                    idCourse: course.idCourse,
+                                    description: course.description,
+                                    credits: course.credits,
+                                    prereq: course.prereq,
+                                    grade: course.grade
+                                }
+                                studentCourses.push(individualCourse)
+                            })
+                            res.status(200).render('studentCoursesPage', {
+                                studentName: studentName,
+                                term: "Spring 2023",
+                                studentCourses
                             })
                         }
                     })
