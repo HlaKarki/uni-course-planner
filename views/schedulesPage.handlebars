@@ -23,10 +23,10 @@
         <tbody>
             {{#each schedules}}
                 <tr>
-                    <td>{{id}}</td>
-                    <td><a href="/studentSchedules/{{id}}">{{idStudent}}</a></td>
-                    <td><a href="/studentSchedules/{{id}}">{{username}}</a></td>
-                    <td>{{credits}}</td>
+                    <td>{{idSchedule}}</td>
+                    <td><a href="/studentSchedules/{{idStudent}}">{{idStudent}}</a></td>
+                    <td><a href="/studentSchedules/{{idStudent}}">{{username}}</a></td>
+                    <td>{{totalCredits}}</td>
                     <td>{{term}}</td>
                     <td><a href="#deleteScheduleButton">Delete</a></td>
                 </tr>
