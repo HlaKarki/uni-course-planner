@@ -24,9 +24,9 @@
         <tbody>
             {{#each courses}}
                 <tr>
-                    <td>{{id}}</td>
-                    <td><a href="/courseDetails/{{id}}">{{name}}</a></td>
-                    <td>{{instructor}}</td>
+                    <td>{{idCourse}}</td>
+                    <td><a href="/courseDetails/{{idCourse}}">{{title}}</a></td>
+                    <td>{{professor}}</td>
                     <td>{{totalEnrolled}}</td>
                     {{#if online}}
                         <td>Yes</td>
@@ -34,7 +34,7 @@
                         <td>--</td>
                     {{else}}
                         <td>No</td>
-                        <td>{{time}}</td>
+                        <td>{{meetingTime}}</td>
                         <td>{{location}}</td>
                     {{/if}}
                     <td><a href="#updateCourseForm">Update</a></td>
