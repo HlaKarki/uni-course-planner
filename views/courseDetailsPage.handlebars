@@ -21,16 +21,17 @@
         <tbody>
             {{#each courseDetails}}
                 <tr>
-                    <td>{{courseId}}</td>
+                    <td>{{idCourse}}</td>
                     <td>{{title}}</td>
                     <td>{{professor}}</td>
                     <td>{{totalEnrolled}}</td>
-                    <td>{{online}}</td>
                     {{#if online}}
+                        <td>Yes</td>
                         <td>--</td>
                         <td>--</td>
                     {{else}}
-                        <td>{{meetTime}}</td>
+                        <td>No</td>
+                        <td>{{meetingTime}}</td>
                         <td>{{location}}</td>
                     {{/if}}
                 </tr>
