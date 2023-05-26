@@ -4,18 +4,9 @@
     box-sizing: border-box;
 }
 
-#logo_banner {
+.logo_banner {
     display: block;
     text-align: center;
-}
-
-#columns_container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin: 3rem;
-    flex-direction: row;
-    flex-wrap: wrap;
 }
 
 .user_direction {
@@ -23,17 +14,46 @@
     font-style: italic;
 }
 
+
+.columns_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Specify the number of columns here */
+    justify-content: center;
+    gap: 20px;
+    margin: 100px 10rem;
+    justify-items: center;
+}
+
 .column {
-    border: 1px solid black;
-    border-radius: 5px;
+    width: 20rem;
+    height: 20rem;
+    transition: transform 0.3s ease;
+
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.column:hover {
+    transform: translateY(-5px);
 }
 
 .column_content {
     margin: 0 0.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .column_title {
     margin: 1.5rem 0;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 
 .column_title ~ div {
@@ -178,10 +198,11 @@ a {
     text-decoration: none;
     font-style: italic;
     font-weight: bold;
-    /*color: #ff9c9c;*/
-    color: #ffbaba;
+    color: black;
 }
 
 a:hover{
     text-decoration: underline;
+    /*color: #ffbaba;*/
+    color: #ff9c9c;
 }
