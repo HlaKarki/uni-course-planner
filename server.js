@@ -5,11 +5,11 @@ const bodyParser = require('body-parser')
 const port = process.env.PORT || 3000
 const app = express()
 
-const CRUDStudents = require('./CRUDStudents')
-const CRUDProfessors = require('./CRUDProfessors')
-const CRUDCourses = require('./CRUDCourses')
-const CRUDClassrooms = require('./CRUDClassrooms')
-const CRUDSchedules = require('./CRUDSchedules')
+const CRUDStudents = require('./CRUDs/CRUDStudents')
+const CRUDProfessors = require('./CRUDs/CRUDProfessors')
+const CRUDCourses = require('./CRUDs/CRUDCourses')
+const CRUDClassrooms = require('./CRUDs/CRUDClassrooms')
+const CRUDSchedules = require('./CRUDs/CRUDSchedules')
 
 app.engine('handlebars', exphbs.engine({
     defaultLayout: "main"
