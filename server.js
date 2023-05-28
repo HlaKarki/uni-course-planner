@@ -50,6 +50,9 @@ CRUDCourses.getCourses(app, db)
 // Gets all the schedules in the database
 CRUDSchedules.getSchedules(app, db)
 
+app.get('/backarrow', (req, res, next)=>{
+    res.sendFile(__dirname+'/public/assets/backarrow.png')
+})
 
 app.listen(port, (err) => {
     if (err) { throw err }
