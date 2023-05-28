@@ -95,11 +95,12 @@ table {
 th, td {
     padding: 8px;
     text-align: left;
-    border: 1px solid #ddd;
+    border: 1px solid black;
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #b85555;
+    text-align: center;
 }
 
 .table_container {
@@ -107,7 +108,7 @@ th {
 }
 
 #page_mini_title {
-    margin: 2rem 0;
+    margin: 5rem 0;
     text-align: center;
 }
 
