@@ -54,6 +54,10 @@ app.get('/backarrow', (req, res, next)=>{
     res.sendFile(__dirname+'/public/assets/backarrow.png')
 })
 
+app.get('/homeIcon', (req, res, next)=>{
+    res.sendFile(__dirname+'/public/assets/home.png')
+})
+
 app.listen(port, (err) => {
     if (err) { throw err }
     console.log("== Server listening on port", port)
