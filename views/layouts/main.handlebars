@@ -20,19 +20,22 @@
             display: flex;
             align-items: center;
         }
-        .back_button{
+        .back_button, .home_button{
             margin-top: 1.2rem;
             margin-left: 1.5rem;
             cursor: pointer;
             transition: transform 0.3s;
             padding: 1rem 1rem;
         }
-        .back_button:hover {
+        .home_button{
+            margin-right: 1.5rem;
+        }
+        .back_button:hover, .home_button:hover {
             transform: scale(1.2);
             border-radius: 10px;
             box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
         }
-        .back_button img {
+        .back_button img, .home_button img {
             width: 32px;
             height: 32px;
         }
@@ -48,10 +51,11 @@
 
 <body>
     <div class="navbar">
-        <div class="back_button" onclick="redirectTo('/')" title="Go back to homepage"><img src="/backarrow"></div>
+        <div class="back_button" onclick="backTrack()" title="previous page"><img src="/backarrow"></div>
         <div class="logo_banner banner_link" onclick="redirectTo(`/`)">
             <h1>University Course Planner</h1>
         </div>
+        <div class="home_button" onclick="redirectTo('/')" title="Go back to page"><img src="/homeIcon"></div>
     </div>
 
 
@@ -60,6 +64,11 @@
     <script>
         function redirectTo(page){
             window.location.href = page
+        }
+
+        function backTrack(){
+            let previousUrl = document.referrer;
+            window.location.href = previousUrl
         }
     </script>
 </body>
