@@ -9,14 +9,55 @@
     <link rel="stylesheet" href="/index.css">
 
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js" defer></script>
+
+    <!--    fonts   -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+
+    <style>
+        .navbar {
+            display: flex;
+        }
+        .back_button{
+            margin-top: 1.2rem;
+            margin-left: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .back_button:hover {
+            transform: scale(1.2);
+        }
+        .back_button img {
+            width: 32px;
+            height: 32px;
+        }
+        .banner_link{
+            margin: auto;
+        }
+        .banner_link:hover {
+            color: #ff9c9c;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="logo_banner">
-        <h1><a href="/">CKHH University Course Planner</a></h1>
+    <div class="navbar">
+        <div class="back_button" onclick="redirectTo('/')" title="Go back to homepage"><img src="/backarrow"></div>
+        <div class="logo_banner banner_link" onclick="redirectTo(`/`)">
+            <h1>University Course Planner</h1>
+        </div>
     </div>
+
 
     {{{body}}}
 
+    <script>
+        function redirectTo(page){
+            window.location.href = page
+        }
+    </script>
 </body>
 </html>
