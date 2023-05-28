@@ -4,6 +4,22 @@
     box-sizing: border-box;
 }
 
+body {
+    background-image: url(https://grainy-gradients.vercel.app/noise.svg);
+    background-color: #5a2f38;
+    color: black;
+    /*font-family: 'Roboto Condensed', sans-serif;*/
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.5rem;
+}
+
+a {
+    text-decoration: none;
+    font-style: italic;
+    font-weight: bold;
+    color: black;
+}
+
 .logo_banner {
     display: block;
     text-align: center;
@@ -37,6 +53,8 @@
 }
 
 .column:hover {
+    font-size: 2rem;
+    font-weight: bold;
     transform: translateY(-5px);
     cursor: pointer;
 }
@@ -193,24 +211,5 @@ button[type="submit"]:hover {
 
 
 /*-----proper styling------*/
-body {
-    background-image: url(https://grainy-gradients.vercel.app/noise.svg);
-    background-color: #5a2f38;
-    color: black;
-    /*font-family: 'Roboto Condensed', sans-serif;*/
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 1.5rem;
-}
 
-a {
-    text-decoration: none;
-    font-style: italic;
-    font-weight: bold;
-    color: black;
-}
 
-a:hover{
-    /*text-decoration: underline;*/
-    /*!*color: #ffbaba;*!*/
-    /*color: #ff9c9c;*/
-}
