@@ -11,19 +11,31 @@ body {
     /*font-family: 'Roboto Condensed', sans-serif;*/
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 1.5rem;
+
+    overflow-x: hidden;
 }
 
 a {
     text-decoration: none;
     font-style: italic;
     font-weight: bold;
-    color: black;
+    color: #e2c1c1;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #ff9c9c;
 }
 
 .logo_banner {
     display: block;
     text-align: center;
     margin-top: 1rem;
+}
+
+#page_mini_title {
+    margin: 5rem 0;
+    text-align: center;
 }
 
 .user_direction {
@@ -88,13 +100,23 @@ a {
     font-size: 1.2rem;
 }
 
+.table_container {
+    /*margin: 2rem 1rem;*/
+    margin: 6rem 2rem;
+    font-size: 1.2rem;
+}
+
 table {
     border-collapse: collapse;
     width: 100%;
 }
 
+thead {
+    font-size: 1.4rem;
+}
+
 th, td {
-    padding: 8px;
+    padding: 1.3rem;
     text-align: left;
     border: 1px solid black;
 }
@@ -104,20 +126,13 @@ th {
     text-align: center;
 }
 
-.table_container {
-    margin: 2rem 1rem;
-}
-
-#page_mini_title {
-    margin: 5rem 0;
-    text-align: center;
-}
-
 #explain_to_user {
     margin-bottom: 0.5rem;
-    padding: 2px;
+    padding: 1.5rem;
     border: 1px solid black;
     border-radius: 3px;
+
+    color: rgba(0, 0, 0, 0.74);
 }
 
 #explain_to_user p{
@@ -211,7 +226,5 @@ button[type="submit"]:hover {
 }
 /*-----------------------------*/
 
-
-/*-----proper styling------*/
 
 
