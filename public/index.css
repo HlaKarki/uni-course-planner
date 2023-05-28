@@ -119,11 +119,16 @@ th, td {
     padding: 1.3rem;
     text-align: left;
     border: 1px solid black;
+    cursor: default;
 }
 
-th {
+th{
     background-color: #b85555;
     text-align: center;
+}
+
+tr{
+    background-color: #b27e7e;
 }
 
 #explain_to_user {
