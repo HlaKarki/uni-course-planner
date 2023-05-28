@@ -38,6 +38,14 @@
 
 .column:hover {
     transform: translateY(-5px);
+    cursor: pointer;
+}
+
+.column:hover .column_title{
+    text-decoration: underline;
+    /*color: #ffbaba;*/
+    color: #ff9c9c;
+
 }
 
 .column_content {
@@ -202,7 +210,7 @@ a {
 }
 
 a:hover{
-    text-decoration: underline;
-    /*color: #ffbaba;*/
-    color: #ff9c9c;
+    /*text-decoration: underline;*/
+    /*!*color: #ffbaba;*!*/
+    /*color: #ff9c9c;*/
 }
