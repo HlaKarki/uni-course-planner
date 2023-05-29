@@ -24,12 +24,13 @@ module.exports.getCourses = (app, db) => {
                                         concat(building, ' ', roomNumber) as location
                                     FROM Classrooms;`
 
-            db.pool.query(getCourses, (err, received, fields) => {
+            db.pool.query(getCourses, (err, receivedCourses, fields) => {
                 const courses = []
+                const courseNames = []
                 if (err) { res.sendStatus(400) }
                 else {
                     // console.log(received)
-                    received.map(course => {
+                    receivedCourses.map(course => {
                         let individualCourse = {
                             idCourse: course.idCourse,
                             title: course.title,
@@ -40,6 +41,11 @@ module.exports.getCourses = (app, db) => {
                             location: course.location
                         }
                         courses.push(individualCourse)
+
+                        let individualCourseTitle = {
+                            title: course.title
+                        }
+                        courseNames.push(individualCourseTitle)
                     })
                     db.pool.query(getProfessors, (err, receivedProfs, fields) => {
                         const professors = []
@@ -65,7 +71,7 @@ module.exports.getCourses = (app, db) => {
                                         classrooms.push(individualClassrooom)
                                     })
                                     res.status(200).render('coursesPage', {
-                                        courses, professors, classrooms
+                                        courses, professors, classrooms, courseNames
                                     })
                                 }
                             })
