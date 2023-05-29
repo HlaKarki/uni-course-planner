@@ -3,6 +3,12 @@
 </div>
 
 <div class="table_container">
+    <div class="table_navbar">
+        <div></div>
+        <div class="addButton" onclick="toggleForm(`addProfForm`)">
+            Add new professor &nbsp; &nbsp; <img src="/addIcon" alt="add icon">
+        </div>
+    </div>
     <table>
         <thead>
         <tr>
@@ -33,10 +39,12 @@
 
 <script>
     function fillDeleteForm(professorId) {
+        toggleForm("deleteProfForm")
         document.getElementById('professorDelete').value = professorId;
     }
 
     function fillUpdateForm(studentId, firstname, lastname, email) {
+        toggleForm("updateProfForm")
         document.getElementById('idProfessor').value = studentId;
         document.getElementById('updateFirstname').value = firstname;
         document.getElementById('updateLastname').value = lastname;
