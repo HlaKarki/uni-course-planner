@@ -1,5 +1,6 @@
 <div class="form_container">
-    <form class="form" method="POST" action="/addProfessor">
+    <form class="form hide" id="addProfForm" method="POST" action="/addProfessor">
+        <img class="closeButton" onclick="toggleForm(`addProfForm`)" src="/addIcon" alt="close icon"/>
         <label class="form_title bold">Add New Professor</label>
         <div class="form_div">
             <label for="firstname">First Name:</label>
@@ -21,7 +22,8 @@
 </div>
 
 <div class="form_container">
-    <form class="form" id="updateProfForm" method="POST" action="/updateProfessor">
+    <form class="form hide" id="updateProfForm" method="POST" action="/updateProfessor">
+        <img class="closeButton" onclick="toggleForm(`updateProfForm`)" src="/addIcon" alt="close icon"/>
         <label class="form_title bold">Update</label>
         <div class="form_div block">
             <label for="idProfessor">idProfessor:</label>
@@ -48,7 +50,8 @@
 </div>
 
 <div class="form_container">
-    <form class="form" id="deleteProfForm" method="POST" action="/deleteProfessor">
+    <form class="form hide" id="deleteProfForm" method="POST" action="/deleteProfessor">
+        <img class="closeButton" onclick="toggleForm(`deleteProfForm`)" src="/addIcon" alt="close icon"/>
         <label class="form_title bold">Delete</label>
 
         <div class="form_div block">
