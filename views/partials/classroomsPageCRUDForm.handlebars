@@ -1,5 +1,6 @@
 <div class="form_container">
-    <form class="form">
+    <form class="form hide" id="addNewClassroom">
+        <img class="closeButton" onclick="toggleForm(`addNewClassroom`)" src="/addIcon" alt="close icon"/>
         <label class="form_title bold">Add New Classroom</label>
         <div class="form_div">
             <label for="totalSeats">Total Seats:</label>
@@ -21,7 +22,8 @@
 </div>
 
 <div class="form_container">
-    <form class="form" id="updateClassroomForm">
+    <form class="form hide" id="updateClassroomForm">
+        <img class="closeButton" onclick="toggleForm(`updateClassroomForm`)" src="/addIcon" alt="close icon"/>
         <label class="form_title bold">Update</label>
         <div class="form_div block">
             <label for="idClassroom">idClassroom:</label>
@@ -48,7 +50,8 @@
 </div>
 
 <div class="form_container">
-    <form class="form" id="deleteClassroomForm">
+    <form class="form hide" id="deleteClassroomForm">
+        <img class="closeButton" onclick="toggleForm(`deleteClassroomForm`)" src="/addIcon" alt="close icon"/>
         <label class="form_title bold">Delete</label>
 
         <div class="form_div block">
