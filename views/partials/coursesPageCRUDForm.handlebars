@@ -1,5 +1,5 @@
 <div class="form_container">
-    <form class="form hide" id="addNewCourseForm">
+    <form class="form hide" id="addNewCourseForm"  method="POST" action="/addCourse">
         <img class="closeButton" onclick="toggleForm(`addNewCourseForm`)" src="/addIcon" alt="close icon"/>
         <label class="form_title bold">Add New Course</label>
 
@@ -9,11 +9,12 @@
         </div>
 
         <div class="form_div prof">
-            <label for="course">Professor:</label>
-            <select id="course" name="course">
-                <option value="kalathap">Paris Kalathas</option>
-                <option value="bussch">Christopher Buss</option>
-                <option value="hessr">Robb Hess</option>
+            <label for="professor">Professor:</label>
+            <select id="professor" name="professor">
+                <option value="choose">Choose a professor</option>
+                {{#each professors}}
+                    <option value="{{idProfessor}}">{{profName}}</option>
+                {{/each}}
             </select>
         </div>
 
@@ -46,9 +47,13 @@
             <div class="form_div prof">
                 <label for="classroom">Classroom:</label>
                 <select id="classroom" name="course">
-                    <option value="W153">Weniger 153</option>
-                    <option value="W151">Weniger 151</option>
-                    <option value="LPSC">Linus Pauling Science Center</option>
+                    <option value="choose">Choose a classroom</option>
+                    {{#each classrooms}}
+                        <option value="{{idClassroom}}">{{location}}</option>
+                    {{/each}}
+<!--                    <option value="W153">Weniger 153</option>-->
+<!--                    <option value="W151">Weniger 151</option>-->
+<!--                    <option value="LPSC">Linus Pauling Science Center</option>-->
                 </select>
             </div>
         </div>
