@@ -51,13 +51,16 @@ CRUDCourses.getCourses(app, db)
 CRUDSchedules.getSchedules(app, db)
 
 app.get('/backarrow', (req, res, next)=>{
-    res.sendFile(__dirname+'/public/assets/backarrow.png')
+    res.sendFile(__dirname + '/public/assets/backarrow.png')
 })
 
 app.get('/homeIcon', (req, res, next)=>{
-    res.sendFile(__dirname+'/public/assets/home.png')
+    res.sendFile(__dirname + '/public/assets/home.png')
 })
 
+app.get('/addIcon', (req, res, next)=>{
+    res.sendFile(__dirname + '/public/assets/plus.png')
+})
 app.listen(port, (err) => {
     if (err) { throw err }
     console.log("== Server listening on port", port)
