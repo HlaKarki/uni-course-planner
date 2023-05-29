@@ -137,6 +137,7 @@ tr{
 }
 
 #explain_to_user {
+    margin-right: 0.2rem;
     margin-bottom: 0.5rem;
     padding: 1.5rem;
     border: 1px solid black;
@@ -295,6 +296,12 @@ button[type="submit"]:hover {
 
 .extraMarginBottom{
     margin-bottom: 2rem;
+}
+
+.aTagColor{
+    color: #e2c1c1;
+    font-style: italic;
+    font-weight: bold;
 }
 
 #modal-backdrop {
