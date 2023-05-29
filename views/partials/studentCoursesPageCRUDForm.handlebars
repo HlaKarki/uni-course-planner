@@ -1,5 +1,6 @@
 <div class="form_container">
-    <form class="form">
+    <form class="form hide" id="newStudentCourseForm">
+        <img class="closeButton" onclick="toggleForm(`newStudentCourseForm`)" src="/addIcon"/>
         <label class="form_title bold">Add course to your schedule</label>
 
         <div class="form_div courseDropDown">
@@ -20,7 +21,8 @@
 </div>
 
 <div class="form_container">
-    <form class="form" id="deleteCourseForm">
+    <form class="form hide" id="deleteStudentCourseForm">
+        <img class="closeButton" onclick="toggleForm(`deleteStudentCourseForm`)" src="/addIcon"/>
         <label class="form_title bold">Delete</label>
         <div class="form_div courseDropDown">
             <label for="deleteCourse">*Select Course:</label>
@@ -29,6 +31,6 @@
             </select>
         </div>
 
-        <button id="updateStudentButton" type="submit">Update</button>
+        <button id="deleteStudentCourseButton" type="submit">Delete</button>
     </form>
 </div>
