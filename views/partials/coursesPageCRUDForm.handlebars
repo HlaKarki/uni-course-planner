@@ -5,35 +5,41 @@
 
         <div class="form_div">
             <label for="title">Title:</label>
-            <input type="text" id="title" name="title">
+            <input type="text" id="title" name="title" required>
         </div>
 
         <div class="form_div prof">
             <label for="professor">Professor:</label>
-            <select id="professor" name="professor">
-                <option value="choose">Choose a professor</option>
+            <select id="professor" name="professor" required>
+                <option value="" disabled selected>Choose a professor</option>
                 {{#each professors}}
                     <option value="{{idProfessor}}">{{profName}}</option>
                 {{/each}}
             </select>
         </div>
 
-        <div class="form_div">
+        <div class="form_div descriptionDiv">
             <label for="description">Description:</label>
-            <textarea id="description" name="description" rows="5" cols="19"></textarea>
+            <textarea id="description" name="description" rows="5" cols="19" required></textarea>
         </div>
 
         <div class="form_div totCreds">
             <label for="totalCredits">Total Credits:</label>
-            <input type="number" id="totalCredits" name="totalCredits" min="1" max="5">
+            <input type="number" id="totalCredits" name="totalCredits" min="1" max="5" required>
         </div>
 
         <div class="form_div">
-            <label for="Prerequisites">Prerequisites:</label>
-            <input type="text" id="Prerequisites" name="Prerequisites">
+            <label for="prerequisites">Prerequisites:</label>
+            <select id="prerequisites" name="prerequisites" required>
+                <option value="" disabled selected>Choose a prerequisite</option>
+                <option value="NULL">None</option>
+                {{#each courseNames}}
+                    <option value="{{title}}">{{title}}</option>
+                {{/each}}
+            </select>
         </div>
 
-        <div class="form_div displayBlock">
+        <div class="form_div">
             <label for="online">Online:</label>
             <input type="checkbox" id="online" name="online" value="yes" checked>
         </div>
@@ -47,13 +53,10 @@
             <div class="form_div prof">
                 <label for="classroom">Classroom:</label>
                 <select id="classroom" name="course">
-                    <option value="choose">Choose a classroom</option>
+                    <option value="" disabled selected>Choose a classroom</option>
                     {{#each classrooms}}
                         <option value="{{idClassroom}}">{{location}}</option>
                     {{/each}}
-<!--                    <option value="W153">Weniger 153</option>-->
-<!--                    <option value="W151">Weniger 151</option>-->
-<!--                    <option value="LPSC">Linus Pauling Science Center</option>-->
                 </select>
             </div>
         </div>
