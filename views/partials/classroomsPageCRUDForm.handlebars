@@ -1,10 +1,10 @@
 <div class="form_container">
-    <form class="form hide" id="addNewClassroom">
+    <form class="form hide" id="addNewClassroom" method="POST" action="/addClassroom">
         <img class="closeButton" onclick="toggleForm(`addNewClassroom`)" src="/addIcon" alt="close icon"/>
         <label class="form_title bold">Add New Classroom</label>
         <div class="form_div">
             <label for="totalSeats">Total Seats:</label>
-            <input type="text" id="totalSeats" name="totalSeats">
+            <input type="number" id="totalSeats" name="totalSeats" min="10" max="500">
         </div>
 
         <div class="form_div">
@@ -14,7 +14,7 @@
 
         <div class="form_div">
             <label for="roomNumber">Room Number:</label>
-            <input type="text" id="roomNumber" name="roomNumber">
+            <input type="number" id="roomNumber" name="roomNumber" min="100" max="9999">
         </div>
 
         <button type="submit">Submit</button>
@@ -22,27 +22,27 @@
 </div>
 
 <div class="form_container">
-    <form class="form hide" id="updateClassroomForm">
+    <form class="form hide" id="updateClassroomForm" method="POST" action="/updateClassroom">
         <img class="closeButton" onclick="toggleForm(`updateClassroomForm`)" src="/addIcon" alt="close icon"/>
         <label class="form_title bold">Update</label>
         <div class="form_div block">
             <label for="idClassroom">idClassroom:</label>
-            <input type="text" id="idClassroom" name="idClassroom">
+            <input type="number" id="idClassroom" name="idClassroom">
         </div>
 
         <div class="form_div">
-            <label for="updatetotalSeats">Total Seats:</label>
-            <input type="text" id="updatetotalSeats" name="updatetotalSeats">
+            <label for="updateTotalSeats">Total Seats:</label>
+            <input type="number" id="updateTotalSeats" name="updateTotalSeats" min="10" max="500">
         </div>
 
         <div class="form_div">
-            <label for="updatebuilding">Building:</label>
-            <input type="text" id="updatebuilding" name="updatebuilding">
+            <label for="updateBuilding">Building:</label>
+            <input type="text" id="updateBuilding" name="updateBuilding">
         </div>
 
         <div class="form_div block">
-            <label for="roomNumber">Room Number:</label>
-            <input type="text" id="roomNumber" name="roomNumber">
+            <label for="updateRoomNumber">Room Number:</label>
+            <input type="number" id="updateRoomNumber" name="updateRoomNumber" min="100" max="9999">
         </div>
 
         <button id="updateProfessorButton" type="submit">Update</button>
@@ -50,13 +50,13 @@
 </div>
 
 <div class="form_container">
-    <form class="form hide" id="deleteClassroomForm">
+    <form class="form hide" id="deleteClassroomForm" method="POST" action="/deleteClassroom">
         <img class="closeButton" onclick="toggleForm(`deleteClassroomForm`)" src="/addIcon" alt="close icon"/>
         <label class="form_title bold">Delete</label>
 
         <div class="form_div block">
-            <label for="ClassroomDelete">idClassroom:</label>
-            <input type="text" id="ClassroomDelete" name="ClassroomDelete">
+            <label for="idClassroomDelete">idClassroom:</label>
+            <input type="number" id="idClassroomDelete" name="idClassroomDelete">
         </div>
 
         <button id="deleteClassroomButton" type="submit">Delete</button>
