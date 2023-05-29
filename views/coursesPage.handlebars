@@ -5,10 +5,10 @@
 <div class="table_container">
     <div class="table_navbar">
         <div id="explain_to_user">
-            To check the details of a course, please click the values that are <label class="underline">underlined</label>
+            To check the details of a course, please click the values that are <label class="aTagColor">colored</label>
         </div>
         <div class="addButton" onclick="toggleForm(`addNewCourseForm`)">
-            Add new professor &nbsp; &nbsp; <img src="/addIcon" alt="add icon">
+            Add new course &nbsp; &nbsp; <img src="/addIcon" alt="add icon">
         </div>
     </div>
 
@@ -52,6 +52,6 @@
     </table>
 </div>
 
-{{>coursesPageCRUDForm}}
+{{>coursesPageCRUDForm professors=professors classrooms=classrooms}}
 
 {{>coursesPageScript}}
