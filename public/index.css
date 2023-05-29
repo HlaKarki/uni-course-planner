@@ -131,13 +131,18 @@ tr{
     background-color: #b27e7e;
 }
 
+.table_navbar{
+    display: flex;
+    justify-content: space-between;
+}
+
 #explain_to_user {
     margin-bottom: 0.5rem;
     padding: 1.5rem;
     border: 1px solid black;
     border-radius: 3px;
 
-    color: rgba(0, 0, 0, 0.74);
+    color: black;
 }
 
 #explain_to_user p{
@@ -166,24 +171,34 @@ tr{
     cursor: pointer;
 }
 
-.form_container {
-    width: 70%;
-    margin: 2rem auto;
-}
-
 .form {
+    width: 35rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f1f1f1;
+    background-color: #aa797a;
     padding: 20px;
     border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+
+    z-index: 110;
 }
 
 .form_div {
+    width: 25rem;
+    height: 4rem;
     display: flex;
-    flex-direction: column;
+    gap: 1.0rem;
     margin-bottom: 10px;
+
+    overflow: auto;
+}
+
+.form_div label{
+    min-width: 10rem;
 }
 
 .form_title {
@@ -194,26 +209,46 @@ input[type="text"],
 input[type="email"],
 input[type="number"]
 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.2rem;
     width: 100%;
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #fff;
+    background-color: #cfacac;
     margin-top: 5px;
     margin-bottom: 10px;
 }
 
 button[type="submit"] {
-    background-color: #4CAF50;
-    color: #fff;
+    margin-top: 2.5rem;
+    background-color: #673737;
+    color: whitesmoke;
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
+    border-radius: 10px;
+    padding: 30px 40px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.6rem;
     cursor: pointer;
 }
 
 button[type="submit"]:hover {
-    background-color: #3e8e41;
+    background-color: #ab4040;
+}
+
+.closeButton{
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
+    position: relative;
+    left: 45%;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.closeButton:hover {
+    transform: rotate(135deg);
 }
 
 .hide {
@@ -230,6 +265,48 @@ button[type="submit"]:hover {
     margin-bottom: 1rem;
 }
 /*-----------------------------*/
+.addButton{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding: 23px;
 
+    background-color: #aa797a;
+    border: 1px solid black;
+    border-radius: 5px;
 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
+.addButton:hover {
+    background-color: #b05353;
+}
+
+.addButton img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.addButton:hover img {
+    transform: rotate(90deg);
+}
+
+.extraMarginBottom{
+    margin-bottom: 2rem;
+}
+
+#modal-backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.hide{
+    display: none;
+}
