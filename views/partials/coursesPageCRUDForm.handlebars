@@ -1,5 +1,6 @@
 <div class="form_container">
-    <form class="form">
+    <form class="form hide" id="addNewCourseForm">
+        <img class="closeButton" onclick="toggleForm(`addNewCourseForm`)" src="/addIcon" alt="close icon"/>
         <label class="form_title bold">Add New Course</label>
 
         <div class="form_div">
@@ -57,7 +58,8 @@
 </div>
 
 <div class="form_container">
-    <form class="form" id="updateCourseForm">
+    <form class="form hide" id="updateCourseForm">
+        <img class="closeButton" onclick="toggleForm(`updateCourseForm`)" src="/addIcon" alt="close icon"/>
         <label class="form_title bold">Update</label>
         <div class="form_div block">
             <label for="idCourse">idCourse:</label>
@@ -105,7 +107,8 @@
 </div>
 
 <div class="form_container">
-    <form class="form" id="deleteCourseForm">
+    <form class="form hide" id="deleteCourseForm">
+        <img class="closeButton" onclick="toggleForm(`deleteCourseForm`)" src="/addIcon" alt="close icon"/>
         <label class="form_title bold">Delete</label>
 
         <div class="form_div block">
