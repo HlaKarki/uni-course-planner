@@ -9,7 +9,7 @@
     <div class="table_navbar">
         <div></div>
         <div class="addButton" onclick="toggleForm(`addNewClassroom`)">
-            Add new professor &nbsp; &nbsp; <img src="/addIcon" alt="add icon">
+            Add new classroom &nbsp; &nbsp; <img src="/addIcon" alt="add icon">
         </div>
     </div>
     <table>
@@ -31,8 +31,8 @@
                 <td>{{totalSeats}}</td>
                 <td>{{building}}</td>
                 <td>{{roomNumber}}</td>
-                <td><a href="#updateClassroomForm" onclick="updateClassroom()">Update</a></td>
-                <td><a href="#deleteClassroomForm" onclick="deleteClassroom()">Delete</a></td>
+                <td><a href="#updateClassroomForm" onclick="updateClassroom('{{idClassroom}}', '{{totalSeats}}', '{{building}}', '{{roomNumber}}')">Update</a></td>
+                <td><a href="#deleteClassroomForm" onclick="deleteClassroom({{idClassroom}})">Delete</a></td>
             </tr>
         {{/each}}
 
@@ -43,11 +43,16 @@
 {{>classroomsPageCRUDForm}}
 
 <script>
-    function updateClassroom(){
+    function updateClassroom(idClassroom, updateTotalSeats, updateBuilding, updateRoomNumber){
         toggleForm("updateClassroomForm")
+        document.getElementById("idClassroom").value = idClassroom
+        document.getElementById("updateTotalSeats").value = updateTotalSeats
+        document.getElementById("updateBuilding").value = updateBuilding
+        document.getElementById("updateRoomNumber").value = updateRoomNumber
     }
 
-    function deleteClassroom(){
+    function deleteClassroom(idClassroom){
         toggleForm("deleteClassroomForm")
+        document.getElementById("idClassroomDelete").value = idClassroom
     }
 </script>
