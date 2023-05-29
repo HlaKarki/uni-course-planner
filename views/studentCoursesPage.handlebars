@@ -3,9 +3,15 @@
 </div>
 
 <div class="table_container">
-    <div id="explain_to_user">
-        To check a course's details, please click the <label class="underline">underlined</label> value
+    <div class="table_navbar">
+        <div id="explain_to_user">
+            To check a course's details, please click the <label class="aTagColor">colored</label> value
+        </div>
+        <div class="addButton" onclick="toggleForm(`newStudentCourseForm`)">
+            Add new student &nbsp; &nbsp; <img src="/addIcon" alt="add icon">
+        </div>
     </div>
+
     <table>
         <thead>
         <tr>
@@ -26,7 +32,7 @@
                     <td>{{credits}}</td>
                     <td>{{prereq}}</td>
                     <td>{{grade}}</td>
-                    <td><a href="#deleteCourseForm">Delete</a></td>
+                    <td><a href="#deleteCourseForm" onclick="deleteStudentCourse()">Delete</a></td>
                 </tr>
             {{/each}}
         </tbody>
@@ -35,3 +41,9 @@
 </div>
 
 {{>studentCoursesPageCRUDForm}}
+
+<script>
+    function deleteStudentCourse(){
+        toggleForm("deleteStudentCourseForm")
+    }
+</script>
