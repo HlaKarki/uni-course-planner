@@ -6,6 +6,12 @@
 </div>
 
 <div class="table_container">
+    <div class="table_navbar">
+        <div></div>
+        <div class="addButton" onclick="toggleForm(`addNewClassroom`)">
+            Add new professor &nbsp; &nbsp; <img src="/addIcon" alt="add icon">
+        </div>
+    </div>
     <table>
         <thead>
         <tr>
@@ -25,8 +31,8 @@
                 <td>{{totalSeats}}</td>
                 <td>{{building}}</td>
                 <td>{{roomNumber}}</td>
-                <td><a href="#updateClassroomForm">Update</a></td>
-                <td><a href="#deleteClassroomForm">Delete</a></td>
+                <td><a href="#updateClassroomForm" onclick="updateClassroom()">Update</a></td>
+                <td><a href="#deleteClassroomForm" onclick="deleteClassroom()">Delete</a></td>
             </tr>
         {{/each}}
 
@@ -35,3 +41,13 @@
 </div>
 
 {{>classroomsPageCRUDForm}}
+
+<script>
+    function updateClassroom(){
+        toggleForm("updateClassroomForm")
+    }
+
+    function deleteClassroom(){
+        toggleForm("deleteClassroomForm")
+    }
+</script>
