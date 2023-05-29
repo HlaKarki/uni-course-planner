@@ -4,9 +4,15 @@
 </div>
 
 <div class="table_container">
-    <div id="explain_to_user">
-        To check the schedule of a student, please click the student values that are italic and colored white
+    <div class="table_navbar">
+        <div id="explain_to_user">
+            To check the schedule of a student, please click the student values that are italic and colored white
+        </div>
+        <div class="addButton" onclick="toggleForm(`add-student-form`)">
+            Add new student &nbsp; &nbsp; <img src="/addIcon">
+        </div>
     </div>
+
     <table>
         <thead>
         <tr>
@@ -39,10 +45,16 @@
 
 <script>
     function fillDeleteForm(studentId) {
+        // show form
+        toggleForm("deleteStudentForm")
+
         document.getElementById('studentDelete').value = studentId;
     }
 
     function fillUpdateForm(studentId, username, email, major, address) {
+        // show form
+        toggleForm("updateStudentForm")
+
         document.getElementById('idStudent').value = studentId;
         document.getElementById('usernameUpdate').value = username;
         document.getElementById('emailUpdate').value = email;
