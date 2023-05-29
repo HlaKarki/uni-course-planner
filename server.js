@@ -41,8 +41,11 @@ CRUDProfessors.addProfessor(app, db)        // CREATE
 CRUDProfessors.deleteProfessor(app, db)     // DELETE
 CRUDProfessors.updateProfessor(app, db)     // UPDATE
 
-// Gets all the classrooms in the database
+// Classroom Entity CRUD queries
 CRUDClassrooms.getClassrooms(app, db)
+CRUDClassrooms.addClassroom(app, db)
+CRUDClassrooms.updateClassroom(app, db)
+CRUDClassrooms.deleteClassroom(app, db)
 
 // Gets all the courses in the database
 CRUDCourses.getCourses(app, db)
