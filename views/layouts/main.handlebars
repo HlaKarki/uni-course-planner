@@ -58,7 +58,7 @@
         <div class="home_button" onclick="redirectTo('/')" title="Go back to page"><img src="/homeIcon"></div>
     </div>
 
-
+    <div id="modal-backdrop" class="hide"></div>
     {{{body}}}
 
     <script>
@@ -69,6 +69,13 @@
         function backTrack(){
             let previousUrl = document.referrer;
             window.location.href = previousUrl
+        }
+
+        function toggleForm(elementId){
+            const formDiv = document.getElementById(elementId)
+            const modalBackdrop = document.getElementById("modal-backdrop")
+            formDiv.classList.toggle("hide")
+            modalBackdrop.classList.toggle("hide")
         }
     </script>
 </body>
