@@ -1,5 +1,6 @@
 <div class="form_container">
-    <form class="form" id="add-student-form" method="POST" action="/addStudent">
+    <form class="form hide" id="add-student-form" method="POST" action="/addStudent">
+        <img class="closeButton" onclick="toggleForm(`add-student-form`)" src="/addIcon"/>
         <label class="form_title bold">Student Details</label>
         <div class="form_div">
             <label for="username">*Username:</label>
@@ -11,13 +12,12 @@
             <input type="email" id="email" name="email" required>
         </div>
 
-        <div class="form_div">
+        <div class="form_div extraMarginBottom">
             <label for="major">*Major:</label>
             <input type="text" id="major" name="major" required>
         </div>
 
-        <label class="form_div address form_title bold">Student Address</label>
-
+        <label class="form_title bold">Student Address</label>
         <div class="form_div">
             <label for="streetName">*Street Name:</label>
             <input type="text" id="streetName" name="streetName" required>
@@ -48,7 +48,8 @@
 </div>
 
 <div class="form_container">
-    <form class="form" id="updateStudentForm" method="POST" action="/updateStudent">
+    <form class="form  hide" id="updateStudentForm" method="POST" action="/updateStudent">
+        <img class="closeButton" onclick="toggleForm(`updateStudentForm`)" src="/addIcon"/>
         <label class="form_title bold">Update Student Details</label>
         <div class="form_div block">
             <label for="idStudent">idStudent:</label>
@@ -70,7 +71,7 @@
             <input type="text" id="majorUpdate" name="majorUpdate">
         </div>
 
-        <label class="form_div address form_title bold">Update Student Address</label>
+        <label class="form_title bold">Update Student Address</label>
 
         <div class="form_div">
             <label for="streetNameUpdate">Street Name:</label>
@@ -102,7 +103,8 @@
 </div>
 
 <div class="form_container">
-    <form class="form" id="deleteStudentForm" method="POST" action="/deleteStudent">
+    <form class="form hide" id="deleteStudentForm" method="POST" action="/deleteStudent">
+        <img class="closeButton" onclick="toggleForm(`deleteStudentForm`)" src="/addIcon"/>
         <label class="form_title bold">Delete Student</label>
 
         <div class="form_div block">
