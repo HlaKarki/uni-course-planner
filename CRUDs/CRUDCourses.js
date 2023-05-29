@@ -14,6 +14,16 @@ module.exports.getCourses = (app, db) => {
                                     INNER JOIN Professors ON Professors.idProfessor = Courses.idProfessor
                                     LEFT JOIN Classrooms ON Classrooms.idClassroom = Courses.idClassroom;`
 
+            const getProfessors = ` SELECT
+                                        idProfessor,
+                                        concat(firstName, ' ', lastName) as profName
+                                    FROM Professors;`
+
+            const getClassrooms = ` SELECT
+                                        idClassroom,
+                                        concat(building, ' ', roomNumber) as location
+                                    FROM Classrooms;`
+
             db.pool.query(getCourses, (err, received, fields) => {
                 const courses = []
                 if (err) { res.sendStatus(400) }
@@ -31,11 +41,48 @@ module.exports.getCourses = (app, db) => {
                         }
                         courses.push(individualCourse)
                     })
-                    res.status(200).render('coursesPage', {
-                        courses
+                    db.pool.query(getProfessors, (err, receivedProfs, fields) => {
+                        const professors = []
+                        if (err) { res.sendStatus(400) }
+                        else {
+                            receivedProfs.map(professor => {
+                                let individualProf = {
+                                    idProfessor: professor.idProfessor,
+                                    profName: professor.profName
+                                }
+                                professors.push(individualProf)
+                            })
+                            // console.log(professors);
+                            db.pool.query(getClassrooms, (err, receivedClassrooms, fields) => {
+                                let classrooms = []
+                                if (err) { res.sendStatus(400) }
+                                else{
+                                    receivedClassrooms.map(classroom => {
+                                        let individualClassrooom = {
+                                            idClassroom: classroom.idClassroom,
+                                            location: classroom.location
+                                        }
+                                        classrooms.push(individualClassrooom)
+                                    })
+                                    res.status(200).render('coursesPage', {
+                                        courses, professors, classrooms
+                                    })
+                                }
+                            })
+                        }
                     })
                 }
             })
+
+        })
+    )
+}
+
+module.exports.addCourse = (app, db) => {
+    return (
+        app.post("/addCourse", (req, res, next) => {
+            const form_input = req.body
+            console.log(form_input);
 
         })
     )
