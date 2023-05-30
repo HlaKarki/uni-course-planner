@@ -14,7 +14,12 @@
 
         <div class="form_div extraMarginBottom">
             <label for="major">*Major:</label>
-            <input type="text" id="major" name="major" required>
+            <select id="major" name="major" required>
+                <option value="" disabled selected>Choose a major</option>
+                {{#each majors}}
+                    <option value="{{majorName}}">{{majorName}}</option>
+                {{/each}}
+            </select>
         </div>
 
         <label class="form_title bold">Student Address</label>
@@ -49,53 +54,58 @@
 
 <div class="form_container">
     <form class="form  hide" id="updateStudentForm" method="POST" action="/updateStudent">
-        <img class="closeButton" onclick="toggleForm(`updateStudentForm`)" src="/addIcon"/>
+        <img class="closeButton" onclick="toggleForm(`updateStudentForm`)" src="/addIcon" alt="close icon"/>
         <label class="form_title bold">Update Student Details</label>
         <div class="form_div block">
             <label for="idStudent">idStudent:</label>
-            <input type="text" id="idStudent" name="idStudent">
+            <input type="text" id="idStudent" name="idStudent" required>
         </div>
 
         <div class="form_div block">
             <label for="usernameUpdate">Username:</label>
-            <input type="text" id="usernameUpdate" name="usernameUpdate">
+            <input type="text" id="usernameUpdate" name="usernameUpdate" required>
         </div>
 
         <div class="form_div block">
             <label for="emailUpdate">Email:</label>
-            <input type="email" id="emailUpdate" name="emailUpdate">
+            <input type="email" id="emailUpdate" name="emailUpdate" required>
         </div>
 
         <div class="form_div block">
             <label for="majorUpdate">Major:</label>
-            <input type="text" id="majorUpdate" name="majorUpdate">
+            <select id="majorUpdate" name="majorUpdate" required>
+                <option value="" disabled selected>Choose a major</option>
+                {{#each majors}}
+                    <option value="{{majorName}}">{{majorName}}</option>
+                {{/each}}
+            </select>
         </div>
 
         <label class="form_title bold">Update Student Address</label>
 
         <div class="form_div">
             <label for="streetNameUpdate">Street Name:</label>
-            <input type="text" id="streetNameUpdate" name="streetNameUpdate">
+            <input type="text" id="streetNameUpdate" name="streetNameUpdate" required>
         </div>
 
         <div class="form_div">
             <label for="cityUpdate">City:</label>
-            <input type="text" id="cityUpdate" name="cityUpdate">
+            <input type="text" id="cityUpdate" name="cityUpdate" required>
         </div>
 
         <div class="form_div">
             <label for="stateUpdate">State:</label>
-            <input type="text" id="stateUpdate" name="stateUpdate">
+            <input type="text" id="stateUpdate" name="stateUpdate" required>
         </div>
 
         <div class="form_div">
             <label for="zipcodeUpdate">Zipcode:</label>
-            <input type="text" id="zipcodeUpdate" name="zipcodeUpdate">
+            <input type="text" id="zipcodeUpdate" name="zipcodeUpdate" required>
         </div>
 
         <div class="form_div">
             <label for="countryUpdate">Country:</label>
-            <input type="text" id="countryUpdate" name="countryUpdate">
+            <input type="text" id="countryUpdate" name="countryUpdate" required>
         </div>
 
         <button id="updateStudentButton" type="submit">Update</button>
