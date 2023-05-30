@@ -47,8 +47,11 @@ CRUDClassrooms.addClassroom(app, db)
 CRUDClassrooms.updateClassroom(app, db)
 CRUDClassrooms.deleteClassroom(app, db)
 
-// Gets all the courses in the database
+// Courses Entity CRUD queries
 CRUDCourses.getCourses(app, db)
+CRUDCourses.addCourse(app, db)
+CRUDCourses.updateCourse(app, db)
+CRUDCourses.deleteCourse(app, db)
 
 // Gets all the schedules in the database
 CRUDSchedules.getSchedules(app, db)
