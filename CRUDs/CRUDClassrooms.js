@@ -31,7 +31,7 @@ module.exports.addClassroom = (app, db) => {
     return (
         app.post("/addClassroom", (req, res, next) => {
             const form_input = req.body
-            console.log(form_input);
+            // console.log(form_input);
             const addClassroom = `INSERT INTO Classrooms(totalSeats, building, roomNumber) VALUES(${form_input["totalSeats"]}, '${form_input["building"]}', '${form_input["roomNumber"]}');`
 
             db.pool.query(addClassroom, (err, received, fields) => {
@@ -49,7 +49,7 @@ module.exports.updateClassroom = (app, db) => {
     return (
         app.post("/updateClassroom", (req, res, next) => {
             const form_input = req.body
-            console.log(form_input)
+            // console.log(form_input)
             const updateClassroom = `   UPDATE Classrooms
                                         SET totalSeats = ${parseInt(form_input["updateTotalSeats"], 10)}, building = '${form_input["updateBuilding"]}', roomNumber = ${parseInt(form_input["updateRoomNumber"], 10)}
                                         WHERE idClassroom = ${parseInt(form_input["idClassroom"], 10)};
