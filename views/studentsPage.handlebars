@@ -64,8 +64,108 @@
 
         document.getElementById("streetNameUpdate").value = streetName;
         document.getElementById("cityUpdate").value = city;
-        document.getElementById("stateUpdate").value = state;
+
         document.getElementById("zipcodeUpdate").value = zipCode;
         document.getElementById("countryUpdate").value = country;
+
+        const select = document.getElementById("stateUpdate")
+        const selectedCountry = document.getElementById("countryUpdate").value
+        // console.log(selectedCountry);
+
+        // Remove all options except the first one
+        for (let i = select.options.length - 1; i > 0; i--) {
+            select.remove(i);
+        }
+
+        // make a call to the server asking for cities object
+        fetch('/getStates')
+                .then(response => response.json())
+                .then(states => {
+                    // console.log(cities[selectedCountry]); // Log the retrieved cities object
+                    states[selectedCountry].forEach(state => {
+                        let option = new Option(state.stateName, state.stateName);
+                        select.add(option);
+                    });
+
+                    document.getElementById("stateUpdate").value = state;
+                })
+                .catch(error => {
+                    console.log("Error:", error);
+                });
+    }
+
+    function handleCountryChange(){
+        const select = document.getElementById("state")
+        const selectedCountry = document.getElementById("country").value
+        // console.log(selectedCountry);
+
+        // Remove all options except the first one
+        for (let i = select.options.length - 1; i > 0; i--) {
+            select.remove(i);
+        }
+
+        // make a call to the server asking for cities object
+        fetch('/getStates')
+                .then(response => response.json())
+                .then(states => {
+                    // console.log(cities[selectedCountry]); // Log the retrieved cities object
+                    states[selectedCountry].forEach(state => {
+                        let option = new Option(state.stateName, state.stateName);
+                        select.add(option);
+                    });
+                })
+                .catch(error => {
+                    console.log("Error:", error);
+                });
+    }
+
+    function handleCountryChangeUpdateForm(){
+        const select = document.getElementById("stateUpdate")
+        const selectedCountry = document.getElementById("countryUpdate").value
+        // console.log(selectedCountry);
+
+        // Remove all options except the first one
+        for (let i = select.options.length - 1; i > 0; i--) {
+            select.remove(i);
+        }
+
+        // make a call to the server asking for cities object
+        fetch('/getStates')
+                .then(response => response.json())
+                .then(states => {
+                    // console.log(cities[selectedCountry]); // Log the retrieved cities object
+                    states[selectedCountry].forEach(state => {
+                        let option = new Option(state.stateName, state.stateName);
+                        select.add(option);
+                    });
+                })
+                .catch(error => {
+                    console.log("Error:", error);
+                });
+    }
+
+    function handleStateChange(){
+        const select = document.getElementById("city")
+        const selectedState = document.getElementById("state").value
+        // console.log(selectedCountry);
+
+        // Remove all options except the first one
+        for (let i = select.options.length - 1; i > 0; i--) {
+            select.remove(i);
+        }
+
+        // make a call to the server asking for cities object
+        fetch('/getCities')
+                .then(response => response.json())
+                .then(cities => {
+                    // console.log(cities[selectedCountry]); // Log the retrieved cities object
+                    cities[selectedState].forEach(city => {
+                        let option = new Option(city.cityName, city.cityName);
+                        select.add(option);
+                    });
+                })
+                .catch(error => {
+                    console.log("Error:", error);
+                });
     }
 </script>
