@@ -1,6 +1,9 @@
+const majorsOb = require('./additionalData/majors')
 module.exports.getStudent = (app, db) => {
     return (
         app.get('/students', (req, res, next) => {
+            const majors = majorsOb.getMajors
+
             const getStudents = `
                                 SELECT Students.idStudent, username, email, major, CONCAT(streetName, ", ", city, ", ", state, ", ", zipCode, ", ", country) AS address
                                 FROM Students
@@ -27,7 +30,7 @@ module.exports.getStudent = (app, db) => {
                 })
                 // console.log("=== new students: ", allStudents);
                 res.status(200).render('studentsPage', {
-                    allStudents
+                    allStudents, majors
                 })
             })
         })
