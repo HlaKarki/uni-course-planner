@@ -11,6 +11,9 @@ const CRUDCourses = require('./CRUDs/CRUDCourses')
 const CRUDClassrooms = require('./CRUDs/CRUDClassrooms')
 const CRUDSchedules = require('./CRUDs/CRUDSchedules')
 
+const statesOb = require('./CRUDs/additionalData/states')
+const citiesOb = require('./CRUDs/additionalData/cities')
+
 app.engine('handlebars', exphbs.engine({
     defaultLayout: "main"
 }))
@@ -67,6 +70,15 @@ app.get('/homeIcon', (req, res, next)=>{
 app.get('/addIcon', (req, res, next)=>{
     res.sendFile(__dirname + '/public/assets/plus.png')
 })
+
+app.get('/getStates', (req, res, next) => {
+    res.send(statesOb.getStates)
+})
+
+app.get('/getCities', (req, res, next) => {
+    res.send(citiesOb.getCities)
+})
+
 app.listen(port, (err) => {
     if (err) { throw err }
     console.log("== Server listening on port", port)
