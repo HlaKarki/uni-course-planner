@@ -178,7 +178,7 @@ module.exports.getStudentCourses = (app, db) => {
             const idSchedule = req.params.idSchedule
             const getStudentCourses = `
                                         SELECT idCourse, title AS course, description as description, creditHours AS credits, prerequisites AS prereq, grade AS grade
-                                        FROM CourseDetails NATURAL JOIN Courses NATURAL JOIN CourseSchedules AS CS
+                                        FROM Courses NATURAL JOIN CourseSchedules AS CS
                                         WHERE CS.idCourseSchedule = ${idSchedule};
                                        `
             const getStudentName =  `
@@ -203,6 +203,9 @@ module.exports.getStudentCourses = (app, db) => {
                                     credits: course.credits,
                                     prereq: course.prereq,
                                     grade: course.grade
+                                }
+                                if (individualCourse.prereq === "NULL"){
+                                    individualCourse.prereq = "None"
                                 }
                                 studentCourses.push(individualCourse)
                             })
