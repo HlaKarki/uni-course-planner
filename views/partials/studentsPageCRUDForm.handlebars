@@ -43,7 +43,6 @@
 
         <div class="form_div">
             <label for="city">City:</label>
-<!--            <input type="text" id="city" name="city" required>-->
             <select id="city" name="city" required>
                 <option value="" disabled selected>Choose a city</option>
             </select>
@@ -107,14 +106,17 @@
         <div class="form_div">
             <label for="stateUpdate">State:</label>
 <!--            <input type="text" id="stateUpdate" name="stateUpdate" required>-->
-            <select id="stateUpdate" name="stateUpdate" required>
+            <select id="stateUpdate" name="stateUpdate" required onchange="handleStateChangeUpdateForm()">
                 <option value="" disabled selected>Choose a state</option>
             </select>
         </div>
 
         <div class="form_div">
             <label for="cityUpdate">City:</label>
-            <input type="text" id="cityUpdate" name="cityUpdate" required>
+<!--            <input type="text" id="cityUpdate" name="cityUpdate" required>-->
+            <select id="cityUpdate" name="cityUpdate" required>
+                <option value="" disabled selected>Choose a city</option>
+            </select>
         </div>
 
         <div class="form_div">
