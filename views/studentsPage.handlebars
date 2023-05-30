@@ -63,14 +63,13 @@
         const [streetName, city, state, zipCode, country] = address.split(',').map(part => part.trim());
 
         document.getElementById("streetNameUpdate").value = streetName;
-        document.getElementById("cityUpdate").value = city;
 
         document.getElementById("zipcodeUpdate").value = zipCode;
         document.getElementById("countryUpdate").value = country;
 
-        const select = document.getElementById("stateUpdate")
-        const selectedCountry = document.getElementById("countryUpdate").value
-        // console.log(selectedCountry);
+        let select = document.getElementById("stateUpdate")
+        let selectedCountry = document.getElementById("countryUpdate").value
+        // console.log("=== country: ", selectedCountry);
 
         // Remove all options except the first one
         for (let i = select.options.length - 1; i > 0; i--) {
@@ -81,13 +80,37 @@
         fetch('/getStates')
                 .then(response => response.json())
                 .then(states => {
-                    // console.log(cities[selectedCountry]); // Log the retrieved cities object
+                    // console.log(states["USA"]); // Log the retrieved cities object
                     states[selectedCountry].forEach(state => {
                         let option = new Option(state.stateName, state.stateName);
                         select.add(option);
                     });
-
                     document.getElementById("stateUpdate").value = state;
+
+
+                    let selectCity = document.getElementById("cityUpdate")
+                    let selectedState = document.getElementById("stateUpdate").value
+                    console.log("========== ",selectedState);
+
+                    // Remove all options except the first one
+                    for (let i = selectCity.options.length - 1; i > 0; i--) {
+                        selectCity.remove(i);
+                    }
+
+                    // make a call to the server asking for cities object
+                    fetch('/getCities')
+                            .then(response => response.json())
+                            .then(cities => {
+                                console.log(cities[selectedState]); // Log the retrieved cities object
+                                cities[selectedState].forEach(city => {
+                                    let option = new Option(city.cityName, city.cityName);
+                                    selectCity.add(option);
+                                });
+                                document.getElementById("cityUpdate").value = city;
+                            })
+                            .catch(error => {
+                                console.log("Error:", error);
+                            });
                 })
                 .catch(error => {
                     console.log("Error:", error);
@@ -147,6 +170,31 @@
     function handleStateChange(){
         const select = document.getElementById("city")
         const selectedState = document.getElementById("state").value
+        // console.log(selectedCountry);
+
+        // Remove all options except the first one
+        for (let i = select.options.length - 1; i > 0; i--) {
+            select.remove(i);
+        }
+
+        // make a call to the server asking for cities object
+        fetch('/getCities')
+                .then(response => response.json())
+                .then(cities => {
+                    // console.log(cities[selectedCountry]); // Log the retrieved cities object
+                    cities[selectedState].forEach(city => {
+                        let option = new Option(city.cityName, city.cityName);
+                        select.add(option);
+                    });
+                })
+                .catch(error => {
+                    console.log("Error:", error);
+                });
+    }
+
+    function handleStateChangeUpdateForm(){
+        const select = document.getElementById("cityUpdate")
+        const selectedState = document.getElementById("stateUpdate").value
         // console.log(selectedCountry);
 
         // Remove all options except the first one
