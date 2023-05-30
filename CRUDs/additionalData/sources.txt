@@ -1,0 +1,2 @@
+all the states in US: https://gist.github.com/iamjason/8f8f4bc00c13de86bcad
+states and their cities: https://gist.github.com/ahmu83/38865147cf3727d221941a2ef8c22a77
