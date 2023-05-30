@@ -114,7 +114,7 @@ module.exports.addCourse = (app, db) => {
                     res.sendStatus(400)
                 }
                 else {
-                    console.log(received);
+                    // console.log(received);
                     res.redirect("/courses")
                 }
             })
