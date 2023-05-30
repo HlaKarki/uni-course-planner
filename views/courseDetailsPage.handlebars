@@ -9,7 +9,10 @@
         <tr>
             <th>idCourse</th>
             <th>Course Title</th>
+            <th>Description</th>
             <th>Professor</th>
+            <th>Credit Hours</th>
+            <th>Prerequisites</th>
             <th>Total Enrolled</th>
             <th>Online</th>
             <th>Meeting Time</th>
@@ -23,12 +26,15 @@
                 <tr>
                     <td>{{idCourse}}</td>
                     <td>{{title}}</td>
+                    <td>{{description}}</td>
                     <td>{{professor}}</td>
+                    <td>{{creditHours}}</td>
+                    <td>{{prerequisites}}</td>
                     <td>{{totalEnrolled}}</td>
                     {{#if online}}
                         <td>Yes</td>
-                        <td>--</td>
-                        <td>--</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
                     {{else}}
                         <td>No</td>
                         <td>{{meetingTime}}</td>
