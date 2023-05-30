@@ -45,7 +45,12 @@
 
         <div class="form_div">
             <label for="country">*Country:</label>
-            <input type="text" id="country" name="country" required>
+            <select id="country" name="country" required>
+                <option value="" disabled selected>Choose a country</option>
+                {{#each countries}}
+                    <option value="{{countryName}}">{{countryName}}</option>
+                {{/each}}
+            </select>
         </div>
 
         <button id="addStudentButton" type="submit">Submit</button>
@@ -105,7 +110,12 @@
 
         <div class="form_div">
             <label for="countryUpdate">Country:</label>
-            <input type="text" id="countryUpdate" name="countryUpdate" required>
+            <select id="countryUpdate" name="countryUpdate" required>
+                <option value="" disabled selected>Choose a country</option>
+                {{#each countries}}
+                    <option value="{{countryName}}">{{countryName}}</option>
+                {{/each}}
+            </select>
         </div>
 
         <button id="updateStudentButton" type="submit">Update</button>
