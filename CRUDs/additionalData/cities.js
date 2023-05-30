@@ -1138,6 +1138,58 @@ module.exports.getCities = {
         "Concord"
     ].map(cityName => ({cityName})),
 
+    "American Samoa": [
+        "Pago Pago",
+        "Tāfuna",
+        "Leone",
+        "Faleniu",
+        "Aūa",
+        "Mapusagafou",
+        "Fagatogo",
+        "Vaitogi",
+        "Malaeimi",
+        "Vailoatai",
+        "Aoloau",
+        "Ta`ū"
+    ].map(cityName => ({cityName})),
+
+    "Guam": [
+        "Dededo Village",
+        "Yigo Village",
+        "Tamuning-Tumon-Harmon Village",
+        "Mangilao Village",
+        "Barrigada Village",
+        "Santa Rita",
+        "Mongmong-Toto-Maite Village",
+        "Chalan Pago-Ordot Village",
+        "Yona Village",
+        "Agat Village",
+        "Agana Heights Village",
+        "Talofofo Village"
+    ].map(cityName => ({cityName})),
+
+    "Puerto Rico": [
+        "San Juan",
+        "Bayamón",
+        "Carolina",
+        "Ponce",
+        "Arecibo",
+        "Caguas",
+        "Guaynabo",
+        "Trujillo Alto",
+        "Mayagüez",
+        "Fajardo",
+        "Levittown",
+        "Vega Baja"
+    ].map(cityName => ({cityName})),
+
+    "Virgin Islands": [
+        "St Croix",
+        "Charlotte Amalie",
+        "Cruz Bay",
+        "Christiansted"
+    ].map(cityName => ({cityName})),
+
     "North Dakota": [
         "Fargo",
         "Bismarck",
@@ -1194,7 +1246,62 @@ module.exports.getCities = {
 
     "Nay Pyi Daw": [
         "Nay Pyi Daw"
-    ].map(cityName => ({cityName}))
+    ].map(cityName => ({cityName})),
+
+    "Ayeyarwady Region": [
+        "Pathein",
+        "Hinthada",
+        "Bogale"
+    ].map(cityName => ({cityName})),
+
+    "Bago Region": [
+        "Bago",
+        "Pyay",
+        "Taungoo",
+        "Nyaunglebin",
+        "Tharrawaddy"
+    ].map(cityName => ({cityName})),
+
+    "Chin State": [
+        "Hakha"
+    ].map(cityName => ({cityName})),
+
+    "Kachin State": [
+        "Myitkyina",
+        "Bhamo"
+    ].map(cityName => ({cityName})),
+
+    "Kayah State": [
+        "Loikaw",
+        "Lawpita"
+    ].map(cityName => ({cityName})),
+
+    "Kayin State": [
+        "Myawaddy",
+        "Kawkariek"
+    ].map(cityName => ({cityName})),
+
+    "Magway Region": [
+        "Pakokku",
+        "Magway",
+        "Aunglan",
+        "Yenangyaung",
+        "Minbu",
+        "Thayet"
+    ].map(cityName => ({cityName})),
+
+    "Rakhine State": [
+        "Sittwe"
+    ].map(cityName => ({cityName})),
+
+    "Shan State": [
+        "Taunggyi"
+    ].map(cityName => ({cityName})),
+
+    "Tanintharyi Region": [
+        "Dawei",
+        "Myeik"
+    ].map(cityName => ({cityName})),
 };
 
 
