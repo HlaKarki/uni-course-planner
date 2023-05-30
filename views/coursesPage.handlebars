@@ -18,10 +18,7 @@
             <th>idCourse</th>
             <th>Title</th>
             <th>Professor</th>
-            <th>Total Enrolled</th>
             <th>Online</th>
-            <th>Meeting Time</th>
-            <th>Classroom</th>
             <th></th>
             <th></th>
         </tr>
@@ -33,18 +30,13 @@
                     <td>{{idCourse}}</td>
                     <td><a href="/courseDetails/{{idCourse}}">{{title}}</a></td>
                     <td>{{professor}}</td>
-                    <td>{{totalEnrolled}}</td>
                     {{#if online}}
                         <td>Yes</td>
-                        <td>--</td>
-                        <td>--</td>
                     {{else}}
                         <td>No</td>
-                        <td>{{meetingTime}}</td>
-                        <td>{{location}}</td>
                     {{/if}}
-                    <td><a href="#updateCourseForm" onclick="updateCourse()">Update</a></td>
-                    <td><a href="#deleteCourseForm" onclick="deleteCourse()">Delete</a></td>
+                    <td><a href="#updateCourseForm" onclick="updateCourse('{{idCourse}}','{{title}}', '{{description}}', '{{creditHours}}', '{{meetingTime}}', '{{idProfessor}}', '{{prerequisites}}', '{{idClassroom}}', {{online}})">Update</a></td>
+                    <td><a href="#deleteCourseForm" onclick="deleteCourse('{{idCourse}}')">Delete</a></td>
                 </tr>
             {{/each}}
         </tbody>
