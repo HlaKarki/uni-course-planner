@@ -122,6 +122,7 @@
         const selectedCountry = document.getElementById("country").value
         // console.log(selectedCountry);
 
+        select.disabled = false;
         // Remove all options except the first one
         for (let i = select.options.length - 1; i > 0; i--) {
             select.remove(i);
@@ -171,6 +172,8 @@
         const select = document.getElementById("city")
         const selectedState = document.getElementById("state").value
         // console.log(selectedCountry);
+
+        select.disabled = false;
 
         // Remove all options except the first one
         for (let i = select.options.length - 1; i > 0; i--) {
