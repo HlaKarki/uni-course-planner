@@ -11,6 +11,9 @@ const CRUDCourses = require('./CRUDs/CRUDCourses')
 const CRUDClassrooms = require('./CRUDs/CRUDClassrooms')
 const CRUDSchedules = require('./CRUDs/CRUDSchedules')
 
+const statesOb = require('./CRUDs/additionalData/states')
+const citiesOb = require('./CRUDs/additionalData/cities')
+
 app.engine('handlebars', exphbs.engine({
     defaultLayout: "main"
 }))
@@ -41,15 +44,40 @@ CRUDProfessors.addProfessor(app, db)        // CREATE
 CRUDProfessors.deleteProfessor(app, db)     // DELETE
 CRUDProfessors.updateProfessor(app, db)     // UPDATE
 
-// Gets all the classrooms in the database
+// Classroom Entity CRUD queries
 CRUDClassrooms.getClassrooms(app, db)
+CRUDClassrooms.addClassroom(app, db)
+CRUDClassrooms.updateClassroom(app, db)
+CRUDClassrooms.deleteClassroom(app, db)
 
-// Gets all the courses in the database
+// Courses Entity CRUD queries
 CRUDCourses.getCourses(app, db)
+CRUDCourses.addCourse(app, db)
+CRUDCourses.updateCourse(app, db)
+CRUDCourses.deleteCourse(app, db)
 
 // Gets all the schedules in the database
 CRUDSchedules.getSchedules(app, db)
 
+app.get('/backarrow', (req, res, next)=>{
+    res.sendFile(__dirname + '/public/assets/backarrow.png')
+})
+
+app.get('/homeIcon', (req, res, next)=>{
+    res.sendFile(__dirname + '/public/assets/home.png')
+})
+
+app.get('/addIcon', (req, res, next)=>{
+    res.sendFile(__dirname + '/public/assets/plus.png')
+})
+
+app.get('/getStates', (req, res, next) => {
+    res.send(statesOb.getStates)
+})
+
+app.get('/getCities', (req, res, next) => {
+    res.send(citiesOb.getCities)
+})
 
 app.listen(port, (err) => {
     if (err) { throw err }

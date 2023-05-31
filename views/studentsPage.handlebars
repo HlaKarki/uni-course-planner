@@ -1,12 +1,18 @@
 <!--suppress ALL -->
 <div id="page_mini_title">
-    <h2>Student Data</h2>
+    <h2>Students Data</h2>
 </div>
 
 <div class="table_container">
-    <div id="explain_to_user">
-        To check the schedule of a student, please click the values that are <label class="underline">underlined</label>
+    <div class="table_navbar">
+        <div id="explain_to_user">
+            To check the schedule of a student, please click the student values that are italic and colored white
+        </div>
+        <div class="addButton" onclick="toggleForm(`add-student-form`)">
+            Add new student &nbsp; &nbsp; <img src="/addIcon">
+        </div>
     </div>
+
     <table>
         <thead>
         <tr>
@@ -39,10 +45,16 @@
 
 <script>
     function fillDeleteForm(studentId) {
+        // show form
+        toggleForm("deleteStudentForm")
+
         document.getElementById('studentDelete').value = studentId;
     }
 
     function fillUpdateForm(studentId, username, email, major, address) {
+        // show form
+        toggleForm("updateStudentForm")
+
         document.getElementById('idStudent').value = studentId;
         document.getElementById('usernameUpdate').value = username;
         document.getElementById('emailUpdate').value = email;
@@ -51,9 +63,160 @@
         const [streetName, city, state, zipCode, country] = address.split(',').map(part => part.trim());
 
         document.getElementById("streetNameUpdate").value = streetName;
-        document.getElementById("cityUpdate").value = city;
-        document.getElementById("stateUpdate").value = state;
+
         document.getElementById("zipcodeUpdate").value = zipCode;
         document.getElementById("countryUpdate").value = country;
+
+        let select = document.getElementById("stateUpdate")
+        let selectedCountry = document.getElementById("countryUpdate").value
+        // console.log("=== country: ", selectedCountry);
+
+        // Remove all options except the first one
+        for (let i = select.options.length - 1; i > 0; i--) {
+            select.remove(i);
+        }
+
+        // make a call to the server asking for cities object
+        fetch('/getStates')
+                .then(response => response.json())
+                .then(states => {
+                    // console.log(states["USA"]); // Log the retrieved cities object
+                    states[selectedCountry].forEach(state => {
+                        let option = new Option(state.stateName, state.stateName);
+                        select.add(option);
+                    });
+                    document.getElementById("stateUpdate").value = state;
+
+
+                    let selectCity = document.getElementById("cityUpdate")
+                    let selectedState = document.getElementById("stateUpdate").value
+                    console.log("========== ",selectedState);
+
+                    // Remove all options except the first one
+                    for (let i = selectCity.options.length - 1; i > 0; i--) {
+                        selectCity.remove(i);
+                    }
+
+                    // make a call to the server asking for cities object
+                    fetch('/getCities')
+                            .then(response => response.json())
+                            .then(cities => {
+                                console.log(cities[selectedState]); // Log the retrieved cities object
+                                cities[selectedState].forEach(city => {
+                                    let option = new Option(city.cityName, city.cityName);
+                                    selectCity.add(option);
+                                });
+                                document.getElementById("cityUpdate").value = city;
+                            })
+                            .catch(error => {
+                                console.log("Error:", error);
+                            });
+                })
+                .catch(error => {
+                    console.log("Error:", error);
+                });
+    }
+
+    function handleCountryChange(){
+        const select = document.getElementById("state")
+        const selectedCountry = document.getElementById("country").value
+        // console.log(selectedCountry);
+
+        select.disabled = false;
+        // Remove all options except the first one
+        for (let i = select.options.length - 1; i > 0; i--) {
+            select.remove(i);
+        }
+
+        // make a call to the server asking for cities object
+        fetch('/getStates')
+                .then(response => response.json())
+                .then(states => {
+                    // console.log(cities[selectedCountry]); // Log the retrieved cities object
+                    states[selectedCountry].forEach(state => {
+                        let option = new Option(state.stateName, state.stateName);
+                        select.add(option);
+                    });
+                })
+                .catch(error => {
+                    console.log("Error:", error);
+                });
+    }
+
+    function handleCountryChangeUpdateForm(){
+        const select = document.getElementById("stateUpdate")
+        const selectedCountry = document.getElementById("countryUpdate").value
+        // console.log(selectedCountry);
+
+        // Remove all options except the first one
+        for (let i = select.options.length - 1; i > 0; i--) {
+            select.remove(i);
+        }
+
+        // make a call to the server asking for cities object
+        fetch('/getStates')
+                .then(response => response.json())
+                .then(states => {
+                    // console.log(cities[selectedCountry]); // Log the retrieved cities object
+                    states[selectedCountry].forEach(state => {
+                        let option = new Option(state.stateName, state.stateName);
+                        select.add(option);
+                    });
+                })
+                .catch(error => {
+                    console.log("Error:", error);
+                });
+    }
+
+    function handleStateChange(){
+        const select = document.getElementById("city")
+        const selectedState = document.getElementById("state").value
+        // console.log(selectedCountry);
+
+        select.disabled = false;
+
+        // Remove all options except the first one
+        for (let i = select.options.length - 1; i > 0; i--) {
+            select.remove(i);
+        }
+
+        // make a call to the server asking for cities object
+        fetch('/getCities')
+                .then(response => response.json())
+                .then(cities => {
+                    // console.log(cities[selectedCountry]); // Log the retrieved cities object
+                    cities[selectedState].forEach(city => {
+                        let option = new Option(city.cityName, city.cityName);
+                        select.add(option);
+                    });
+                })
+                .catch(error => {
+                    console.log("Error:", error);
+                });
+    }
+
+    function handleStateChangeUpdateForm(){
+        const select = document.getElementById("cityUpdate")
+        const selectedState = document.getElementById("stateUpdate").value
+        // console.log(selectedCountry);
+
+        // Remove all options except the first one
+        for (let i = select.options.length - 1; i > 0; i--) {
+            select.remove(i);
+        }
+
+        // make a call to the server asking for cities object
+        fetch('/getCities')
+                .then(response => response.json())
+                .then(cities => {
+                    // console.log(cities[selectedCountry]); // Log the retrieved cities object
+                    cities[selectedState].forEach(city => {
+                        let option = new Option(city.cityName, city.cityName);
+                        select.add(option);
+                    });
+                })
+                .catch(error => {
+                    console.log("Error:", error);
+                });
     }
 </script>

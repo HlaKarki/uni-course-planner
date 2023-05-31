@@ -1,53 +1,64 @@
 <div class="form_container">
-    <form class="form">
+    <form class="form hide" id="addNewCourseForm"  method="POST" action="/addCourse">
+        <img class="closeButton" onclick="toggleForm(`addNewCourseForm`)" src="/addIcon" alt="close icon"/>
         <label class="form_title bold">Add New Course</label>
 
         <div class="form_div">
             <label for="title">Title:</label>
-            <input type="text" id="title" name="title">
+            <input type="text" id="title" name="title" required>
         </div>
 
         <div class="form_div prof">
-            <label for="course">Professor:</label>
-            <select id="course" name="course">
-                <option value="kalathap">Paris Kalathas</option>
-                <option value="bussch">Christopher Buss</option>
-                <option value="hessr">Robb Hess</option>
+            <label for="professor">Professor:</label>
+            <select id="professor" name="professor" required>
+                <option value="" disabled selected>Choose a professor</option>
+                {{#each professors}}
+                    <option value="{{idProfessor}}">{{profName}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="form_div descriptionDiv">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="5" cols="19" required></textarea>
+        </div>
+
+        <div class="form_div totCreds">
+            <label for="creditHours">Total Credits:</label>
+            <input type="number" id="creditHours" name="creditHours" min="1" max="5" required>
+        </div>
+
+        <div class="form_div">
+            <label for="prerequisites">Prerequisites:</label>
+            <select id="prerequisites" name="prerequisites" required>
+                <option value="" disabled selected>Choose a prerequisite</option>
+                <option value="NULL">None</option>
+                {{#each courseNames}}
+                    <option value="{{title}}">{{title}}</option>
+                {{/each}}
             </select>
         </div>
 
         <div class="form_div">
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" rows="5" cols="19"></textarea>
-        </div>
-
-        <div class="form_div totCreds">
-            <label for="totalCredits">Total Credits:</label>
-            <input type="number" id="totalCredits" name="totalCredits" min="1" max="5">
-        </div>
-
-        <div class="form_div">
-            <label for="Prerequisites">Prerequisites:</label>
-            <input type="text" id="Prerequisites" name="Prerequisites">
-        </div>
-
-        <div class="form_div displayBlock">
             <label for="online">Online:</label>
-            <input type="checkbox" id="online" name="online" value="yes" checked>
+            <input type="checkbox" id="online" name="online" value="yes" checked onchange="handleCheckboxChange()">
         </div>
 
         <div id="hideIt" class="hide">
             <div class="form_div">
                 <label for="meetingTime">Meeting Time:</label>
-                <input type="text" id="meetingTime" name="meetingTime" placeholder="00:00">
+                <input type="text" id="meetingTime" name="meetingTime" value="NULL">
+<!--                <input type="time" id="meetingTime" name="meetingTime" min="07:00" max="18:00">-->
             </div>
 
             <div class="form_div prof">
                 <label for="classroom">Classroom:</label>
-                <select id="classroom" name="course">
-                    <option value="W153">Weniger 153</option>
-                    <option value="W151">Weniger 151</option>
-                    <option value="LPSC">Linus Pauling Science Center</option>
+                <select id="classroom" name="classroom">
+                    <option value="" disabled selected>Choose a classroom</option>
+<!--                    <option value="NULL" selected>None</option>-->
+                    {{#each classrooms}}
+                        <option value="{{idClassroom}}">{{location}}</option>
+                    {{/each}}
                 </select>
             </div>
         </div>
@@ -57,7 +68,8 @@
 </div>
 
 <div class="form_container">
-    <form class="form" id="updateCourseForm">
+    <form class="form hide" id="updateCourseForm" method="POST" action="/updateCourse">
+        <img class="closeButton" onclick="toggleForm(`updateCourseForm`)" src="/addIcon" alt="close icon"/>
         <label class="form_title bold">Update</label>
         <div class="form_div block">
             <label for="idCourse">idCourse:</label>
@@ -71,12 +83,33 @@
 
         <div class="form_div block">
             <label for="professorUpdate">Professor:</label>
-            <input type="text" id="professorUpdate" name="professorUpdate">
+            <select id="professorUpdate" name="professorUpdate" required>
+                <option value="" disabled selected>Choose a professor</option>
+                {{#each professors}}
+                    <option value="{{idProfessor}}">{{profName}}</option>
+                {{/each}}
+            </select>
         </div>
 
-        <div class="form_div block">
-            <label for="totalEnrolledUpdate">Total Enrolled:</label>
-            <input type="text" id="totalEnrolledUpdate" name="totalEnrolledUpdate">
+        <div class="form_div descriptionDiv">
+            <label for="descriptionUpdate">Description:</label>
+            <textarea id="descriptionUpdate" name="descriptionUpdate" rows="5" cols="19" required></textarea>
+        </div>
+
+        <div class="form_div totCreds">
+            <label for="creditHoursUpdate">Total Credits:</label>
+            <input type="number" id="creditHoursUpdate" name="creditHoursUpdate" min="1" max="5" required>
+        </div>
+
+        <div class="form_div">
+            <label for="prerequisitesUpdate">Prerequisites:</label>
+            <select id="prerequisitesUpdate" name="prerequisitesUpdate" required>
+                <option value="" disabled selected>Choose a prerequisite</option>
+                <option value="NULL">None</option>
+                {{#each courseNames}}
+                    <option value="{{title}}">{{title}}</option>
+                {{/each}}
+            </select>
         </div>
 
         <div class="form_div displayBlock">
@@ -87,15 +120,16 @@
         <div id="hideItUpdate" class="hide">
             <div class="form_div">
                 <label for="meetingTimeUpdate">Meeting Time:</label>
-                <input type="text" id="meetingTimeUpdate" name="meetingTimeUpdate" placeholder="00:00">
+                <input type="text" id="meetingTimeUpdate" name="meetingTimeUpdate" value="NULL">
             </div>
 
             <div class="form_div prof">
                 <label for="classroomUpdate">Classroom:</label>
                 <select id="classroomUpdate" name="classroomUpdate">
-                    <option value="W153">Weniger 153</option>
-                    <option value="W151">Weniger 151</option>
-                    <option value="LPSC">Linus Pauling Science Center</option>
+                    <option value="" disabled selected>Choose a classroom</option>
+                    {{#each classrooms}}
+                        <option value="{{idClassroom}}">{{location}}</option>
+                    {{/each}}
                 </select>
             </div>
         </div>
@@ -105,7 +139,8 @@
 </div>
 
 <div class="form_container">
-    <form class="form" id="deleteCourseForm">
+    <form class="form hide" id="deleteCourseForm" method="POST" action="/deleteCourse">
+        <img class="closeButton" onclick="toggleForm(`deleteCourseForm`)" src="/addIcon" alt="close icon"/>
         <label class="form_title bold">Delete</label>
 
         <div class="form_div block">

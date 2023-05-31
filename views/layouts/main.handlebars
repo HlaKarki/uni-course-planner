@@ -9,14 +9,74 @@
     <link rel="stylesheet" href="/index.css">
 
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js" defer></script>
+
+    <!--    fonts   -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+
+    <style>
+        .navbar {
+            display: flex;
+            align-items: center;
+        }
+        .back_button, .home_button{
+            margin-top: 1.2rem;
+            margin-left: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            padding: 1rem 1rem;
+        }
+        .home_button{
+            margin-right: 1.5rem;
+        }
+        .back_button:hover, .home_button:hover {
+            transform: scale(1.2);
+            border-radius: 10px;
+            box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+        }
+        .back_button img, .home_button img {
+            width: 32px;
+            height: 32px;
+        }
+        .banner_link{
+            margin: auto;
+        }
+        .banner_link:hover {
+            color: #ff9c9c;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="logo_banner">
-        <h1><a href="/">CKHH University Course Planner</a></h1>
+    <div class="navbar">
+        <div class="back_button" onclick="backTrack()" title="previous page"><img src="/backarrow"></div>
+        <div class="logo_banner banner_link" onclick="redirectTo(`/`)">
+            <h1>University Course Planner</h1>
+        </div>
+        <div class="home_button" onclick="redirectTo('/')" title="Go back to page"><img src="/homeIcon"></div>
     </div>
 
+    <div id="modal-backdrop" class="hide"></div>
     {{{body}}}
 
+    <script>
+        function redirectTo(page){
+            window.location.href = page
+        }
+
+        function backTrack(){
+            let previousUrl = document.referrer;
+            window.location.href = previousUrl
+        }
+
+        function toggleForm(elementId){
+            const formDiv = document.getElementById(elementId)
+            const modalBackdrop = document.getElementById("modal-backdrop")
+            formDiv.classList.toggle("hide")
+            modalBackdrop.classList.toggle("hide")
+        }
+    </script>
 </body>
 </html>

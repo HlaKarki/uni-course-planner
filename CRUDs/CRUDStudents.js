@@ -1,6 +1,12 @@
+const majorsOb = require('./additionalData/majors')
+const countriesOb = require('./additionalData/countries')
+
 module.exports.getStudent = (app, db) => {
     return (
         app.get('/students', (req, res, next) => {
+            const majors = majorsOb.getMajors
+            const countries = countriesOb.getCountries
+
             const getStudents = `
                                 SELECT Students.idStudent, username, email, major, CONCAT(streetName, ", ", city, ", ", state, ", ", zipCode, ", ", country) AS address
                                 FROM Students
@@ -27,7 +33,7 @@ module.exports.getStudent = (app, db) => {
                 })
                 // console.log("=== new students: ", allStudents);
                 res.status(200).render('studentsPage', {
-                    allStudents
+                    allStudents, majors, countries
                 })
             })
         })
@@ -172,7 +178,7 @@ module.exports.getStudentCourses = (app, db) => {
             const idSchedule = req.params.idSchedule
             const getStudentCourses = `
                                         SELECT idCourse, title AS course, description as description, creditHours AS credits, prerequisites AS prereq, grade AS grade
-                                        FROM CourseDetails NATURAL JOIN Courses NATURAL JOIN CourseSchedules AS CS
+                                        FROM Courses NATURAL JOIN CourseSchedules AS CS
                                         WHERE CS.idCourseSchedule = ${idSchedule};
                                        `
             const getStudentName =  `
@@ -197,6 +203,9 @@ module.exports.getStudentCourses = (app, db) => {
                                     credits: course.credits,
                                     prereq: course.prereq,
                                     grade: course.grade
+                                }
+                                if (individualCourse.prereq === "NULL"){
+                                    individualCourse.prereq = "None"
                                 }
                                 studentCourses.push(individualCourse)
                             })

@@ -20,4 +20,54 @@
             additionalFields2.classList.remove('hide');
         }
     });
+
+    function updateSelection(divID){
+        document.getElementById()
+    }
+
+    function updateCourse(idCourse, title, description, creditHoursUpdate, meetingTime, idProfessor, prerequisites, idClassroom, online){
+        toggleForm("updateCourseForm")
+
+        document.getElementById("idCourse").value = idCourse
+        document.getElementById("titleUpdate").value = title
+        document.getElementById("descriptionUpdate").value = description
+        document.getElementById("creditHoursUpdate").value = creditHoursUpdate
+        document.getElementById("meetingTimeUpdate").value = meetingTime
+
+        document.getElementById("professorUpdate").value = parseInt(idProfessor, 10)
+        document.getElementById("prerequisitesUpdate").value = prerequisites
+        document.getElementById("classroomUpdate").value = parseInt(idClassroom, 10)
+
+        document.getElementById("onlineUpdate").checked = (online === 1)
+        const additionalFields2 = document.getElementById('hideItUpdate');
+        if (online){
+            additionalFields2.classList.add('hide');
+        }
+        else {
+            additionalFields2.classList.remove('hide');
+        }
+    }
+
+    function deleteCourse(idCourse){
+        toggleForm("deleteCourseForm")
+        document.getElementById("courseDelete").value = idCourse
+    }
+
+    function handleCheckboxChange() {
+        const checkbox = document.getElementById("online");
+        const classroomSelect = document.getElementById("classroom");
+        const meetingTime = document.getElementById("meetingTime")
+
+        classroomSelect.required = !checkbox.checked;
+        meetingTime.required = !checkbox.checked
+        if (!checkbox.checked){
+            meetingTime.value = ""
+        }
+        else {
+            if (meetingTime.value === ""){
+                meetingTime.value = "NULL"
+            }
+
+        }
+    }
 </script>

@@ -14,70 +14,60 @@
 </head>
 
 <body>
-    <div id="logo_banner">
-        <h1>CKHH University Course Planner</h1>
+    <div class="logo_banner">
+        <h1>University Course Planner</h1>
     </div>
 
-    <div id="columns_container">
+    <div class="columns_container">
         <!--  student column  -->
-        <div class="column">
+        <div class="column" onclick="redirectTo(`/students`)">
             <div class="column_content">
-                <div class="column_title">Student</div>
-                <div><a href="/students">Click</a> to view all the students</div>
-                <div class="bold">CRUD functionality available here!</div>
+                <div class="column_title">Students</div>
             </div>
         </div>
 
         <!--  professors column  -->
-        <div class="column">
+        <div class="column" onclick="redirectTo(`/professors`)">
             <div class="column_content">
                 <div class="column_title">Professors</div>
-                <div><a href="/professors">Click</a> to view all the professors</div>
-                <div class="bold">CRUD functionality available here!</div>
             </div>
         </div>
 
         <!--  Classrooms column  -->
-        <div class="column">
+        <div class="column" onclick="redirectTo(`/classrooms`)">
             <div class="column_content">
                 <div class="column_title">Classrooms</div>
-                <div> <a href= "/classrooms"> Click</a> to view the classrooms</div>
-                <div>CRUD functionality NOT available here yet :(</div>
             </div>
         </div>
 
         <!--  courses column  -->
-        <div class="column">
+        <div class="column" onclick="redirectTo(`/courses`)">
             <div class="column_content">
                 <div class="column_title">Courses</div>
-                <div><a href="/courses">Click</a> to view all the courses provided</div>
-                <div>CRUD functionality NOT available here yet :(</div>
             </div>
         </div>
 
         <!--  Schedules column  -->
-        <div class="column">
+        <div class="column" onclick="redirectTo(`/schedules`)">
             <div class="column_content">
                 <div class="column_title">Schedules</div>
-                <div> <a href= "/schedules"> Click</a> to view schedules</div>
-                <div>CRUD functionality NOT available here yet :(</div>
             </div>
         </div>
 
-
-    </div>
-
-    <div class="user_direction">
-        <label>
-            *Please click the title at the top (banner) to come back to this page whenever you need!
-        </label>
-        <div><br></div>
-        <div>
-            <label>
-                *Please use the designated "test" values to test out the CRUD functionality :)
-            </label>
+        <!--  About column  -->
+        <div class="column" onclick="redirectTo(`/`)">
+            <div class="column_content">
+                <div class="column_title">About</div>
+            </div>
         </div>
+
     </div>
+
+    <script>
+        function redirectTo(page){
+            window.location.href = page
+        }
+    </script>
 
 </body>
 </html>

@@ -48,7 +48,7 @@ module.exports.updateProfessor = function(app, db){
     return (
         app.post('/updateProfessor', (req, res, next) => {
             const form_input = req.body
-            console.log("=== serving /updateProfessors: ", form_input);
+            // console.log("=== serving /updateProfessors: ", form_input);
             const updateProfessor = `
                                         UPDATE Professors
                                         SET firstName = '${form_input["updateFirstname"]}',
@@ -56,7 +56,7 @@ module.exports.updateProfessor = function(app, db){
                                             email = '${form_input["emailUpdate"]}' 
                                         WHERE idProfessor = '${form_input["idProfessor"]}';
                                     `
-            console.log(updateProfessor);
+            // console.log(updateProfessor);
             db.pool.query(updateProfessor, (err, updated, fields)=>{
                 if (err) {res.sendStatus(400)}
                 else{

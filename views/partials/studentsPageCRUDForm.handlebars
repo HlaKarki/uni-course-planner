@@ -1,46 +1,61 @@
 <div class="form_container">
-    <form class="form" id="add-student-form" method="POST" action="/addStudent">
+    <form class="form hide" id="add-student-form" method="POST" action="/addStudent">
+        <img class="closeButton" onclick="toggleForm(`add-student-form`)" src="/addIcon"/>
         <label class="form_title bold">Student Details</label>
         <div class="form_div">
-            <label for="username">*Username:</label>
+            <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
         </div>
 
         <div class="form_div">
-            <label for="email">*Email:</label>
+            <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
         </div>
 
-        <div class="form_div">
-            <label for="major">*Major:</label>
-            <input type="text" id="major" name="major" required>
+        <div class="form_div extraMarginBottom">
+            <label for="major">Major:</label>
+            <select id="major" name="major" required>
+                <option value="" disabled selected>Choose a major</option>
+                {{#each majors}}
+                    <option value="{{majorName}}">{{majorName}}</option>
+                {{/each}}
+            </select>
         </div>
 
-        <label class="form_div address form_title bold">Student Address</label>
+        <label class="form_title bold">Student Address</label>
 
         <div class="form_div">
-            <label for="streetName">*Street Name:</label>
+            <label for="country">Country:</label>
+            <select id="country" name="country" required onchange="handleCountryChange()">
+                <option value="" disabled selected>Choose a country</option>
+                {{#each countries}}
+                    <option value="{{countryName}}">{{countryName}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="form_div">
+            <label for="state">State:</label>
+            <select id="state" name="state" required onchange="handleStateChange()" disabled>
+                <option value="" disabled selected>Choose a state</option>
+            </select>
+        </div>
+
+        <div class="form_div">
+            <label for="city">City:</label>
+            <select id="city" name="city" required disabled>
+                <option value="" disabled selected>Choose a city</option>
+            </select>
+        </div>
+
+        <div class="form_div">
+            <label for="streetName">Street Name:</label>
             <input type="text" id="streetName" name="streetName" required>
         </div>
 
         <div class="form_div">
-            <label for="city">*City:</label>
-            <input type="text" id="city" name="city" required>
-        </div>
-
-        <div class="form_div">
-            <label for="state">*State:</label>
-            <input type="text" id="state" name="state" required>
-        </div>
-
-        <div class="form_div">
-            <label for="zipcode">*Zipcode:</label>
+            <label for="zipcode">Zipcode:</label>
             <input type="number" id="zipcode" name="zipcode" required>
-        </div>
-
-        <div class="form_div">
-            <label for="country">*Country:</label>
-            <input type="text" id="country" name="country" required>
         </div>
 
         <button id="addStudentButton" type="submit">Submit</button>
@@ -48,53 +63,68 @@
 </div>
 
 <div class="form_container">
-    <form class="form" id="updateStudentForm" method="POST" action="/updateStudent">
+    <form class="form  hide" id="updateStudentForm" method="POST" action="/updateStudent">
+        <img class="closeButton" onclick="toggleForm(`updateStudentForm`)" src="/addIcon" alt="close icon"/>
         <label class="form_title bold">Update Student Details</label>
         <div class="form_div block">
             <label for="idStudent">idStudent:</label>
-            <input type="text" id="idStudent" name="idStudent">
+            <input type="text" id="idStudent" name="idStudent" required>
         </div>
 
         <div class="form_div block">
             <label for="usernameUpdate">Username:</label>
-            <input type="text" id="usernameUpdate" name="usernameUpdate">
+            <input type="text" id="usernameUpdate" name="usernameUpdate" required>
         </div>
 
         <div class="form_div block">
             <label for="emailUpdate">Email:</label>
-            <input type="email" id="emailUpdate" name="emailUpdate">
+            <input type="email" id="emailUpdate" name="emailUpdate" required>
         </div>
 
         <div class="form_div block">
             <label for="majorUpdate">Major:</label>
-            <input type="text" id="majorUpdate" name="majorUpdate">
+            <select id="majorUpdate" name="majorUpdate" required>
+                <option value="" disabled selected>Choose a major</option>
+                {{#each majors}}
+                    <option value="{{majorName}}">{{majorName}}</option>
+                {{/each}}
+            </select>
         </div>
 
-        <label class="form_div address form_title bold">Update Student Address</label>
+        <label class="form_title bold">Update Student Address</label>
 
         <div class="form_div">
-            <label for="streetNameUpdate">Street Name:</label>
-            <input type="text" id="streetNameUpdate" name="streetNameUpdate">
-        </div>
-
-        <div class="form_div">
-            <label for="cityUpdate">City:</label>
-            <input type="text" id="cityUpdate" name="cityUpdate">
+            <label for="countryUpdate">Country:</label>
+            <select id="countryUpdate" name="countryUpdate" required onchange="handleCountryChangeUpdateForm()">
+                <option value="" disabled selected>Choose a country</option>
+                {{#each countries}}
+                    <option value="{{countryName}}">{{countryName}}</option>
+                {{/each}}
+            </select>
         </div>
 
         <div class="form_div">
             <label for="stateUpdate">State:</label>
-            <input type="text" id="stateUpdate" name="stateUpdate">
+            <select id="stateUpdate" name="stateUpdate" required onchange="handleStateChangeUpdateForm()">
+                <option value="" disabled selected>Choose a state</option>
+            </select>
+        </div>
+
+        <div class="form_div">
+            <label for="cityUpdate">City:</label>
+            <select id="cityUpdate" name="cityUpdate" required>
+                <option value="" disabled selected>Choose a city</option>
+            </select>
         </div>
 
         <div class="form_div">
             <label for="zipcodeUpdate">Zipcode:</label>
-            <input type="text" id="zipcodeUpdate" name="zipcodeUpdate">
+            <input type="text" id="zipcodeUpdate" name="zipcodeUpdate" required>
         </div>
 
         <div class="form_div">
-            <label for="countryUpdate">Country:</label>
-            <input type="text" id="countryUpdate" name="countryUpdate">
+            <label for="streetNameUpdate">Street Name:</label>
+            <input type="text" id="streetNameUpdate" name="streetNameUpdate" required>
         </div>
 
         <button id="updateStudentButton" type="submit">Update</button>
@@ -102,7 +132,8 @@
 </div>
 
 <div class="form_container">
-    <form class="form" id="deleteStudentForm" method="POST" action="/deleteStudent">
+    <form class="form hide" id="deleteStudentForm" method="POST" action="/deleteStudent">
+        <img class="closeButton" onclick="toggleForm(`deleteStudentForm`)" src="/addIcon"/>
         <label class="form_title bold">Delete Student</label>
 
         <div class="form_div block">
