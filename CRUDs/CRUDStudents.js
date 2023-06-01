@@ -140,7 +140,6 @@ module.exports.getStudentSchedules = (app, db) => {
             const idStudent = parseInt(req.params.studentID, 10)
             const getStudentSchedule = `SELECT * FROM Schedules WHERE idStudent = ${idStudent};`
             const getStudentName = `SELECT username FROM Students WHERE idStudent = ${idStudent};`
-            const getidScheudles = `SELECT idSchedule FROM Scheudles WHERE idStudnet = ${idStudent};`
 
             db.pool.query(getStudentName, (err, receivedName, fields)=>{
                 if (err) { res.sendStatus(400) }
@@ -149,8 +148,8 @@ module.exports.getStudentSchedules = (app, db) => {
                     const studentName = notCapStudentName.charAt(0).toUpperCase() + notCapStudentName.slice(1);
                     db.pool.query(getStudentSchedule, (err, schedules, fields)=>{
                         let studentSchedules = []
+                        let idSchedule
                         if (err) { res.sendStatus(400) }
-
                         else{
                             schedules.map(schedule => {
                                 let individualStudents = {
@@ -160,26 +159,15 @@ module.exports.getStudentSchedules = (app, db) => {
                                     term: schedule.term
                                 }
                                 studentSchedules.push(individualStudents)
+                                idSchedule = schedule.idSchedule
                             })
-                            
-                            db.pool.query(getStudentSchedule, (err, recievedScheudle, field)=>{
-                                if (err) { res.sendStatus(400) }else{
-                                    //console.log(recievedScheudle);
-                                    const idSchedule = recievedScheudle[0].idSchedule
-                                   // console.log(idSchedule);
-
-
-                                    // console.log(schedules);
+                            // console.log(schedules);
+                            // console.log(idSchedule)
                             res.status(200).render('studentSchedulesPage', {
                                 studentName: studentName,
-                                studentSchedules, 
+                                studentSchedules,
                                 idSchedule
                             })
-                                }
-                            }
-                            )
-
-                            
                         }
                     })
                 }
