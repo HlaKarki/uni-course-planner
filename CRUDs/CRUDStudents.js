@@ -166,6 +166,7 @@ module.exports.getStudentSchedules = (app, db) => {
                             res.status(200).render('studentSchedulesPage', {
                                 studentName: studentName,
                                 studentSchedules,
+                                idStudent,
                                 idSchedule
                             })
                         }
@@ -175,6 +176,38 @@ module.exports.getStudentSchedules = (app, db) => {
         })
     )
 }
+
+module.exports.addStudentSchedule = (app, db) => {
+    return (
+        app.post('/addStudentSchedule/:idStudent', (req, res, next) => {
+            const form_input = req.body
+            const idStudent = req.params.idStudent
+            const addStudentSchedule = `INSERT INTO Schedules(idStudent, totalCreditHours, term)
+                                        Values(${idStudent}, 0, '${form_input["term"]}');`
+
+            // console.log(form_input)
+            // console.log(addStudentSchedule);
+            db.pool.query(addStudentSchedule, (err, received, fields) => {
+                err ? res.sendStatus(400) : (res.redirect(`/studentSchedules/${idStudent}`))
+            })
+        })
+    )
+}
+
+module.exports.deleteStudentSchedule = (app, db) => {
+    return (
+        app.post('/deleteStudentSchedule', (req, res, next) => {
+            const form_input = req.body
+            const deleteStudentSchedule = `DELETE FROM Schedules WHERE idSchedule = ${form_input["scheduleDelete"]};`
+            // console.log(form_input)
+            // console.log(form_input["hiddenIdStudent"])
+            db.pool.query(deleteStudentSchedule, (err, received, fields) => {
+                err ? res.sendStatus(err) : (res.redirect(`/studentSchedules/${form_input["hiddenIdStudent"]}`))
+            })
+        })
+    )
+}
+
 
 module.exports.getStudentCourses = (app, db) => {
     return (
