@@ -28,17 +28,3 @@ module.exports.getSchedules = (app, db) => {
         })
     )
 }
-
-module.exports.addStudentSchedules = (app, db) => {
-    return(
-            app.post("/addSchedules", (req, res, next) => {
-                const form_input = req.body
-                console.log(form_input);
-                // console.log(form_input);
-                const addSchedules = `INSERT INTO Schedules(idSchedule, idStudent, totalCreditHours, term) 
-                VALUES(0, '${form_input["term"]}') WHERE idScheudle = ${form_input["idScheudle"]};`
-            }
-    
-            )
-        )
-    }
