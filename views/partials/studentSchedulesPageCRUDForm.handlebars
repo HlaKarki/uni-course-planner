@@ -1,11 +1,15 @@
 <div class="form_container">
-    <form class="form hide" id="newScheduleForm">
+    <form class="form hide" id="newScheduleForm" method = "POST" action="/addSchedules">
         <img class="closeButton" onclick="toggleForm(`newScheduleForm`)" src="/addIcon"/>
         <label class="form_title bold">Create New Schedule</label>
         <div class="form_div">
             <label for="term">*Term:</label>
             <input type="text" id="term" name="term">
         </div>
+
+            <input type="hidden" id="student" name="student" value="{{idSchedule}}">
+
+        
 
         <button type="submit">Submit</button>
     </form>

@@ -29,6 +29,9 @@ CRUDStudents.getStudent(app, db)            // READ
 CRUDStudents.updateStudent(app, db)         // UPDATE
 CRUDStudents.deleteStudent(app, db)         // DELETE
 
+//Add a specific student schedule
+CRUDSchedules.addStudentSchedules(app,db)
+
 // Gets a specific student's schedules
 CRUDStudents.getStudentSchedules(app, db)
 
