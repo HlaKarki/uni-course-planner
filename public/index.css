@@ -39,6 +39,7 @@ a:hover {
 .user_direction {
     text-align: center;
     font-style: italic;
+    margin-bottom: 1.5rem;
 }
 
 
@@ -274,15 +275,6 @@ button[type="submit"]:hover {
     display: none;
 }
 
-/*student courses page styling*/
-.courseDropDown{
-    display: block;
-    margin-bottom: 1.5rem;
-}
-
-.courseDropDown label{
-    margin-bottom: 1rem;
-}
 /*-----------------------------*/
 .addButton{
     display: flex;

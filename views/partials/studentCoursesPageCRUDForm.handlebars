@@ -1,19 +1,21 @@
 <div class="form_container">
-    <form class="form hide" id="newStudentCourseForm">
-        <img class="closeButton" onclick="toggleForm(`newStudentCourseForm`)" src="/addIcon"/>
+    <form class="form hide" id="addStudentCourseForm" method="POST" action="/addStudentCourse/{{idSchedule}}">
+        <img class="closeButton" onclick="toggleForm(`addStudentCourseForm`)" src="/addIcon"/>
         <label class="form_title bold">Add course to your schedule</label>
 
-        <div class="form_div courseDropDown">
-            <label for="course">*Select Course:</label>
-            <select id="course" name="course">
-                <option value="database">Intro To Database</option>
-                <option value="webdev">Web Development</option>
+        <div class="form_div">
+            <label for="course">Course:</label>
+            <select id="course" name="course" required>
+                <option value="" disabled selected>Choose a course</option>
+                {{#each courseNames}}
+                    <option value="{{idCourse}}">{{title}}</option>
+                {{/each}}
             </select>
         </div>
 
         <div class="form_div">
             <label for="grade">Grade:</label>
-            <input type="text" id="grade" name="grade" placeholder="--">
+            <input type="text" id="grade" name="grade" placeholder="_ _" maxlength="2" pattern="[^\d]+">
         </div>
 
         <button type="submit">Submit</button>

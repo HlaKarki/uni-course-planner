@@ -7,8 +7,8 @@
         <div id="explain_to_user">
             To check a course's details, please click the <label class="aTagColor">colored</label> value
         </div>
-        <div class="addButton" onclick="toggleForm(`newStudentCourseForm`)">
-            Add new student &nbsp; &nbsp; <img src="/addIcon" alt="add icon">
+        <div class="addButton" onclick="toggleForm(`addStudentCourseForm`)">
+            Add new course &nbsp; &nbsp; <img src="/addIcon" alt="add icon">
         </div>
     </div>
 
@@ -31,7 +31,12 @@
                     <td>{{description}}</td>
                     <td>{{credits}}</td>
                     <td>{{prereq}}</td>
-                    <td>{{grade}}</td>
+                    {{#if grade}}
+                        <td>{{grade}}</td>
+                    {{else}}
+                        <td>N/A</td>
+                    {{/if}}
+
                     <td><a href="#deleteCourseForm" onclick="deleteStudentCourse()">Delete</a></td>
                 </tr>
             {{/each}}
@@ -40,7 +45,7 @@
     </table>
 </div>
 
-{{>studentCoursesPageCRUDForm}}
+{{>studentCoursesPageCRUDForm courseNames=courseNames idSchedule=idSchedule}}
 
 <script>
     function deleteStudentCourse(){

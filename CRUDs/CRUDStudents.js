@@ -166,6 +166,7 @@ module.exports.getStudentSchedules = (app, db) => {
                             res.status(200).render('studentSchedulesPage', {
                                 studentName: studentName,
                                 studentSchedules,
+                                idStudent,
                                 idSchedule
                             })
                         }
@@ -176,6 +177,38 @@ module.exports.getStudentSchedules = (app, db) => {
     )
 }
 
+module.exports.addStudentSchedule = (app, db) => {
+    return (
+        app.post('/addStudentSchedule/:idStudent', (req, res, next) => {
+            const form_input = req.body
+            const idStudent = req.params.idStudent
+            const addStudentSchedule = `INSERT INTO Schedules(idStudent, totalCreditHours, term)
+                                        Values(${idStudent}, 0, '${form_input["term"]}');`
+
+            // console.log(form_input)
+            // console.log(addStudentSchedule);
+            db.pool.query(addStudentSchedule, (err, received, fields) => {
+                err ? res.sendStatus(400) : (res.redirect(`/studentSchedules/${idStudent}`))
+            })
+        })
+    )
+}
+
+module.exports.deleteStudentSchedule = (app, db) => {
+    return (
+        app.post('/deleteStudentSchedule', (req, res, next) => {
+            const form_input = req.body
+            const deleteStudentSchedule = `DELETE FROM Schedules WHERE idSchedule = ${form_input["scheduleDelete"]};`
+            // console.log(form_input)
+            // console.log(form_input["hiddenIdStudent"])
+            db.pool.query(deleteStudentSchedule, (err, received, fields) => {
+                err ? res.sendStatus(err) : (res.redirect(`/studentSchedules/${form_input["hiddenIdStudent"]}`))
+            })
+        })
+    )
+}
+
+
 module.exports.getStudentCourses = (app, db) => {
     return (
         app.get('/studentCourses/:idSchedule', (req, res, next) => {
@@ -183,44 +216,88 @@ module.exports.getStudentCourses = (app, db) => {
             const getStudentCourses = `
                                         SELECT idCourse, title AS course, description as description, creditHours AS credits, prerequisites AS prereq, grade AS grade
                                         FROM Courses NATURAL JOIN CourseSchedules AS CS
-                                        WHERE CS.idCourseSchedule = ${idSchedule};
+                                        WHERE CS.idSchedule = ${idSchedule};
                                        `
             const getStudentName =  `
                                         SELECT username FROM Students NATURAL JOIN Schedules WHERE idSchedule = ${idSchedule};
                                     `
+
+            const getAvailableCourses = ` SELECT title, idCourse FROM Courses;`
             db.pool.query(getStudentName, (err, receivedUsername, fields) => {
                 if (err) { res.sendStatus(400) }
                 else {
-                    const notCapStudentName = receivedUsername[0].username
-                    const studentName = notCapStudentName.charAt(0).toUpperCase() + notCapStudentName.slice(1);
-                    // console.log(capitalizedStudentName);
-                    db.pool.query(getStudentCourses, (err, receivedCourses, fields)=>{
-                        let studentCourses = []
+                    let courseNames = []
+                    db.pool.query(getAvailableCourses, (err, recCourseNames, fields) => {
                         if (err) { res.sendStatus(400) }
-                        else{
-                            // console.log(receivedCourses);
-                            receivedCourses.map(course => {
-                                let individualCourse = {
-                                    course: course.course,
-                                    idCourse: course.idCourse,
-                                    description: course.description,
-                                    credits: course.credits,
-                                    prereq: course.prereq,
-                                    grade: course.grade
+                        else {
+                            recCourseNames.map(course => {
+                                let individualTitle = {
+                                    title: course.title,
+                                    idCourse: course.idCourse
                                 }
-                                if (individualCourse.prereq === "NULL"){
-                                    individualCourse.prereq = "None"
-                                }
-                                studentCourses.push(individualCourse)
+                                courseNames.push(individualTitle)
                             })
-                            res.status(200).render('studentCoursesPage', {
-                                studentName: studentName,
-                                term: "Spring 2023",
-                                studentCourses
+
+                            const notCapStudentName = receivedUsername[0].username
+                            const studentName = notCapStudentName.charAt(0).toUpperCase() + notCapStudentName.slice(1);
+                            // console.log(capitalizedStudentName);
+                            db.pool.query(getStudentCourses, (err, receivedCourses, fields)=>{
+                                let studentCourses = []
+
+                                if (err) { res.sendStatus(400) }
+                                else{
+                                    // console.log(receivedCourses);
+                                    receivedCourses.map(course => {
+                                        let individualCourse = {
+                                            course: course.course,
+                                            idCourse: course.idCourse,
+                                            description: course.description,
+                                            credits: course.credits,
+                                            prereq: course.prereq,
+                                            grade: course.grade
+                                        }
+                                        if (individualCourse.prereq === "NULL"){
+                                            individualCourse.prereq = "None"
+                                        }
+
+                                        let individualCourseName = {
+                                            title: course.course
+                                        }
+                                        studentCourses.push(individualCourse)
+                                    })
+                                    res.status(200).render('studentCoursesPage', {
+                                        studentName: studentName,
+                                        term: "Spring 2023",
+                                        studentCourses,
+                                        courseNames,
+                                        idSchedule
+                                    })
+                                }
                             })
                         }
                     })
                 }
+            })
+        })
+    )
+}
+
+module.exports.addStudentCourses = (app, db) => {
+    return (
+        app.post('/addStudentCourse/:idSchedule', (req, res, next) => {
+            const form_input = req.body
+            const idSchedule = req.params.idSchedule
+
+            console.log(form_input)
+            console.log(idSchedule)
+
+            const addStudentCourse =`INSERT INTO CourseSchedules(idSchedule, idCourse, grade)
+                                     VALUES( ${idSchedule}, ${form_input["course"]}, '${form_input["grade"]}');  `
+
+            console.log(addStudentCourse)
+
+            db.pool.query(addStudentCourse, (err, recCourseSchedules, fields) => {
+                err ? res.sendStatus(400) : res.redirect(`/studentCourses/${idSchedule}`)
             })
         })
     )

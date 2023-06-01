@@ -1,19 +1,24 @@
 <div class="form_container">
-    <form class="form hide" id="newScheduleForm" method = "POST" action="/addSchedules">
+    <form class="form hide" id="newScheduleForm" method = "POST" action="/addStudentSchedule/{{idStudent}}">
         <img class="closeButton" onclick="toggleForm(`newScheduleForm`)" src="/addIcon"/>
         <label class="form_title bold">Create New Schedule</label>
         <div class="form_div">
             <label for="term">*Term:</label>
-            <input type="text" id="term" name="term">
+            <select id="term" name="term" required>
+                <option value="" disabled selected>Choose a term</option>
+                <option value="Summer 2023">Summer 2023</option>
+                <option value="Fall 2023">Fall 2023</option>
+                <option value="Winter 2024">Winter 2024</option>
+                <option value="Spring 2024">Spring 2024</option>
+                <option value="Summer 2024">Summer 2024</option>
+            </select>
         </div>
-        <input type="hidden" id="student" name="student" value="{{idSchedule}}">
-
         <button type="submit">Submit</button>
     </form>
 </div>
 
 <div class="form_container">
-    <form class="form hide" id="deleteScheduleForm">
+    <form class="form hide" id="deleteScheduleForm" method="POST" action="/deleteStudentSchedule">
         <img class="closeButton" onclick="toggleForm(`deleteScheduleForm`)" src="/addIcon"/>
         <label class="form_title bold">Delete</label>
 
@@ -22,6 +27,8 @@
             <input type="text" id="scheduleDelete" name="scheduleDelete">
         </div>
 
+        <label for="hiddenIdStudent"></label>
+        <input type="hidden" value="{{idStudent}}" name="hiddenIdStudent" id="hiddenIdStudent">
         <button id="deleteScheduleButton" type="submit">Delete</button>
     </form>
 </div>
