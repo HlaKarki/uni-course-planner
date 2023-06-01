@@ -8,7 +8,7 @@
             To check all the courses added in a term, please click the <label class="aTagColor">colored</label> value
         </div>
         <div class="addButton" onclick="toggleForm(`newScheduleForm`)">
-            Add new student &nbsp; &nbsp; <img src="/addIcon">
+            Add new schedule &nbsp; &nbsp; <img src="/addIcon">
         </div>
     </div>
 
@@ -28,7 +28,7 @@
                     <td>{{idSchedule}}</td>
                     <td>{{totalCreditHours}}</td>
                     <td><a href="/studentCourses/{{idSchedule}}">{{term}}</a></td>
-                    <td><a href="#deleteScheduleButton" onclick="deleteSchedule()">Delete</a></td>
+                    <td><a href="#deleteScheduleButton" onclick="deleteSchedule({{idSchedule}})">Delete</a></td>
                 </tr>
             {{/each}}
         </tbody>
@@ -36,10 +36,12 @@
     </table>
 </div>
 
-{{>studentSchedulesPageCRUDForm idStudent=idStudent }}
+{{>studentSchedulesPageCRUDForm idStudent=idStudent idSchedule=idSchedule}}
 
 <script>
-    function deleteSchedule(){
+    function deleteSchedule(idSchedule){
         toggleForm('deleteScheduleForm')
+
+        document.getElementById("scheduleDelete").value = idSchedule
     }
 </script>
