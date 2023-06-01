@@ -24,11 +24,11 @@
             {{#each schedules}}
                 <tr>
                     <td>{{idSchedule}}</td>
-                    <td><a href="/studentSchedules/{{idStudent}}">{{idStudent}}</a></td>
+                    <td>{{idStudent}}</td>
                     <td><a href="/studentSchedules/{{idStudent}}">{{username}}</a></td>
                     <td>{{totalCredits}}</td>
                     <td><a href="/studentCourses/{{idSchedule}}">{{term}}</a></td>
-                    <td><a href="#deleteScheduleButton">Delete</a></td>
+                    <td><a href="#deleteScheduleButton" onclick="deleteScheduleUpdate({{idSchedule}})">Delete</a></td>
                 </tr>
             {{/each}}
         </tbody>
@@ -42,3 +42,10 @@
 </div>
 
 {{>schedulesPageCRUDForm}}
+
+<script>
+    function deleteScheduleUpdate(idSchedule){
+        toggleForm("deleteScheduleForm")
+        document.getElementById("scheduleDelete").value = idSchedule
+    }
+</script>
